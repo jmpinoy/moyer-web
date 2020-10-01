@@ -1,21 +1,25 @@
 <template>
-  <div id="testimonials">
-    <v-row>
-      <v-col v-for="testimonial in testimonials" :key="testimonial.client">
-        <v-card class="pa-md-8 ma-15">
-          <v-row align="center" justify="center" class="font-weight-bold display-1 mb-3">
-              {{ testimonial.client }}
-          </v-row>
-          <v-row align="center" justify="center" class="font-weight-medium display-0 mb-5">
-            {{ testimonial.description }}
-          </v-row>
-          <v-row align="center" justify="center" class="font-weight-medium display-0">
-            {{ testimonial.company }}
+  <v-container id="testimonials">
+    <v-row align="center" justify="space-around">
+      <v-col cols="11" md="5" v-for="testimonial in testimonials" :key="testimonial.client">
+        <v-card flat class="px-8">
+          <v-row>
+            <v-col>
+              <v-row align="center" justify="center" class="font-weight-bold display-1">
+                {{ testimonial.client }}
+              </v-row>
+              <v-row align="center" justify="center" class="font-weight-meduim display-0">
+                {{ testimonial.description }}
+              </v-row>
+              <v-row align="center" justify="center" class="font-weight-meduim display-0">
+                {{ testimonial.company }}
+              </v-row>
+            </v-col>
           </v-row>
         </v-card>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
