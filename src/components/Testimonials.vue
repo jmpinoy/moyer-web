@@ -2,7 +2,7 @@
   <v-container id="testimonials">
     <v-row align="center" justify="space-around">
       <v-col cols="11" md="5" v-for="testimonial in testimonials" :key="testimonial.client">
-        <v-card flat class="px-8">
+        <v-card class="px-8">
           <v-row>
             <v-col>
               <v-row align="center" justify="center" class="font-weight-bold display-1">
