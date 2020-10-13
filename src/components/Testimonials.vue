@@ -2,16 +2,16 @@
   <v-container id="testimonials">
     <v-row align="center" justify="space-around">
       <v-col cols="11" md="5" v-for="testimonial in testimonials" :key="testimonial.client">
-        <v-card class="px-8">
+        <v-card outlined flat class="pa-8">
           <v-row>
             <v-col>
-              <v-row align="center" justify="center" class="font-weight-bold display-1">
+              <v-row align="center" justify="center" class="py-2 font-weight-bold display-1">
                 {{ testimonial.client }}
               </v-row>
-              <v-row align="center" justify="center" class="font-weight-meduim display-0">
+              <v-row align="center" justify="center" class="py-2 font-weight-meduim body-1">
                 {{ testimonial.description }}
               </v-row>
-              <v-row align="center" justify="center" class="font-weight-meduim display-0">
+              <v-row align="center" justify="center" class="py-2 font-weight-meduim body-1">
                 {{ testimonial.company }}
               </v-row>
             </v-col>
