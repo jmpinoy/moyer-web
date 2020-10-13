@@ -11,11 +11,12 @@
 import WorkSamples from '@/components/WorkSamples'
 import Testimonials from '@/components/Testimonials'
 import HeroImage from '@/components/HeroImage'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'Components',
   components: {
-    Footer
+    Footer,
     WorkSamples,
     Testimonials,
     HeroImage,
