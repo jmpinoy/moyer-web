@@ -1,25 +1,22 @@
 <template>
   <div class="components">
-    <HelloWorld />
-    <WorkSamples />
-    <HelloWorld />
+    <HeroImage />
     <Testimonials />
-
-
+    <WorkSamples />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
 import WorkSamples from '@/components/WorkSamples'
 import Testimonials from '@/components/Testimonials'
+import HeroImage from '@/components/HeroImage'
 
 export default {
   name: 'Components',
   components: {
-    HelloWorld,
     WorkSamples,
     Testimonials,
+    HeroImage,
   }
 }
 </script>

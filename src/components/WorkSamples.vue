@@ -1,5 +1,5 @@
 <template>
-  <div id="worksamples"  v-bind:style="{ backgroundColor: color}">
+  <v-container id="worksamples" fluid v-bind:style="{ backgroundColor: color}">
     <v-row>
       <v-col v-for="sample in samples" :key="sample.title" >
         <v-card flat class="pa-md-8 ma-15 flat" v-bind:style="{ backgroundColor: color}">
@@ -24,7 +24,7 @@
         </v-card>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
