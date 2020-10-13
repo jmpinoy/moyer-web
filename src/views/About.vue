@@ -6,6 +6,9 @@
       :title="story.title"
       :image="story.img"
       :description="story.description" />
+
+    <Team />
+
     <Descriptor
       :descriptorId="shop.id"
       :subtitle="shop.subtitle"
@@ -18,11 +21,13 @@
 
 <script>
 import Descriptor from '@/components/Descriptor.vue'
+import Team from '@/components/Team.vue'
 
 export default {
   name: 'About',
   components: {
     Descriptor,
+    Team
   },
   data: () => ({
     story: {
