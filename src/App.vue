@@ -4,17 +4,20 @@
     <v-main>
       <router-view />
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import SiteNav from './components/SiteNav';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
 
   components: {
     SiteNav,
+    Footer
   },
 
   data: () => ({
