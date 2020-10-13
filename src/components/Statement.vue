@@ -1,9 +1,9 @@
 <template>
-  <v-container id="heroImage">
+  <v-container id="statement" class="pa-16">
     <v-row align="center" justify="space-around">
       <v-col cols="11" md="6">
         <v-card flat class="px-8">
-          <v-col cols="10">
+          <v-col cols="12">
             <v-row class="display-1 font-weight-black py-4">
               <v-col>
                 {{ title }}
@@ -37,7 +37,7 @@
 
 <script>
   export default {
-    name: 'HeroImage',
+    name: 'Statement',
     data: () => ({
       image: "/img/cabinetPlaceholder.png",
       title: "Our mission statement",

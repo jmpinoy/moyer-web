@@ -1,5 +1,5 @@
 <template>
-  <v-container id="testimonials">
+  <v-container id="testimonials" class="pa-16">
     <v-row align="center" justify="space-around">
       <v-col cols="11" md="5" v-for="testimonial in testimonials" :key="testimonial.client">
         <v-card outlined flat class="pa-8">

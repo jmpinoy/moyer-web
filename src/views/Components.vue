@@ -1,5 +1,6 @@
 <template>
   <div class="components">
+    <ContactSection />
     <Statement />
     <HeroImage />
     <Testimonials />
@@ -12,6 +13,7 @@ import WorkSamples from '@/components/WorkSamples'
 import Testimonials from '@/components/Testimonials'
 import HeroImage from '@/components/HeroImage'
 import Statement from '@/components/Statement'
+import ContactSection from '@/components/ContactSection'
 
 export default {
   name: 'Components',
@@ -20,6 +22,7 @@ export default {
     Testimonials,
     HeroImage,
     Statement,
+    ContactSection,
   }
 }
 </script>
