@@ -18,7 +18,7 @@
               {{ description }}
             </v-row>
             <v-row justify="start" align="center" class="py-4">
-              <v-col cols="4" v-for="button in buttons" :key="button.name">
+              <v-col cols="12" md="4" v-for="button in buttons" :key="button.name">
                   <v-btn dark rounded large color="#b51600" :to="button.route">
                     {{ button.name }}
                   </v-btn>
