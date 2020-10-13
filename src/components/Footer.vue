@@ -23,35 +23,6 @@
         </v-row>
     </v-col>
     <v-col>
-    <div id="instagram-feed1" > </div>
-    <script type="application/javascript">
-    (function(){
-        new InstagramFeed({
-            'username': 'moyercabinets',
-            'container': document.getElementById("instagram-feed1"),
-            'display_profile': true,
-            'display_biography': true,
-            'display_gallery': true,
-            'callback': null,
-            'styling': true,
-            'items': 8,
-            'items_per_row': 4,
-            'margin': 1,
-            'lazy_load': true,
-            'on_error': console.error
-        });
-    })();
-</script>
     </v-col>
   </v-footer>
 </template>
-<script>
-export default {
-    name: 'Footer',
-      mounted() {
-    let externalScript = document.createElement('script')
-    externalScript.setAttribute('src', '../../node_modules/@jsanahuja/instagramfeed/dist/InstagramFeed.min.js')
-    document.head.appendChild(externalScript)
-    }
-}
-</script>
