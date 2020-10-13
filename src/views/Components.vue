@@ -1,5 +1,6 @@
 <template>
   <div class="components">
+    <Statement />
     <Footer />
     <HeroImage />
     <Testimonials />
@@ -11,6 +12,7 @@
 import WorkSamples from '@/components/WorkSamples'
 import Testimonials from '@/components/Testimonials'
 import HeroImage from '@/components/HeroImage'
+import Statement from '@/components/Statement'
 import Footer from '@/components/Footer'
 
 export default {
@@ -20,6 +22,7 @@ export default {
     WorkSamples,
     Testimonials,
     HeroImage,
+    Statement,
   }
 }
 </script>
