@@ -36,8 +36,8 @@
     name: 'HeroImage',
     data: () => ({
       image: "/img/moyerDiagram.png",
-      title: "We aren't ******* around here.",
-      description: "Listen. Here's some good looking stuff for you to look at and you'd better get your *** in our shop now.",
+      title: "We don't mess around around here.",
+      description: "Listen. Here's some good looking stuff for you to look at!",
       buttons: [
           {
               name: "Residential",
