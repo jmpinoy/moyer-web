@@ -9,11 +9,9 @@
       <!-- Logo/Title -->
       <v-row justify="center" class="pt-3">
         <v-toolbar-title class="blue--text font-weight-medium">
-          <v-img
-          contain
-          src="/img/moyerBlack.png"
-          id="logo"
-          @click="GoHome" />
+          <h2  @click="GoHome"> 
+          Moyer Cabinets
+          </h2>
         </v-toolbar-title>
       </v-row>
 
