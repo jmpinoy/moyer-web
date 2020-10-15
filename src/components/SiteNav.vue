@@ -7,7 +7,7 @@
     color="white"
     hide-on-scroll>
       <!-- Logo/Title -->
-      <div class="d-flex align-center">
+      <v-row justify="center" class="pt-3">
         <v-toolbar-title class="blue--text font-weight-medium">
           <v-img
           contain
@@ -15,9 +15,10 @@
           id="logo"
           @click="GoHome" />
         </v-toolbar-title>
-      </div>
+      </v-row>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
+      <v-spacer />
 
       <!-- Navigation Buttons -->
       <v-toolbar-items v-for="button in buttons" :key="button.name" class="hidden-md-and-down">
