@@ -5,7 +5,7 @@
     height="80"
     flat
     color="white"
-    >
+    hide-on-scroll>
       <!-- Logo/Title -->
       <div class="d-flex align-center">
         <v-toolbar-title class="blue--text font-weight-medium">
@@ -62,11 +62,11 @@ export default {
     drawer: false,
     buttons: [
       // Remove this route for production //
-      {
-        name: 'Components',
-        icon: '',
-        route: '/components',
-      },
+      // {
+      //   name: 'Components',
+      //   icon: '',
+      //   route: '/components',
+      // },
       // -------------------------------- //
       {
         name: 'About',
