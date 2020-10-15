@@ -4,6 +4,7 @@
     <Statement />
     <WorkSamples />
     <Testimonials />
+    <Contact />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import HeroImage from '@/components/HeroImage.vue'
 import Statement from '@/components/Statement.vue'
 import WorkSamples from '@/components/WorkSamples.vue'
 import Testimonials from '@/components/Testimonials.vue'
+import Contact from '@/components/ContactSection.vue'
 
 export default {
   name: 'Home',
@@ -19,7 +21,8 @@ export default {
     HeroImage,
     Statement,
     WorkSamples,
-    Testimonials
+    Testimonials,
+    Contact
   }
 }
 </script>

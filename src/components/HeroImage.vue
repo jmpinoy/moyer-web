@@ -1,5 +1,5 @@
 <template>
-  <v-container id="heroImage">
+  <v-container id="heroImage" class="pa-16">
     <v-row align="center" justify="space-around">
       <v-col cols="11" md="6">
         <v-card flat class="px-8">
