@@ -1,5 +1,5 @@
 <template>
-  <v-container id="contactSection" class="py-16">
+  <v-container id="contactSection">
     <v-row align="center" justify="space-around">
       <v-col cols="11" md="6">
         <v-card flat class="px-8">
