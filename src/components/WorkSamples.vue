@@ -1,5 +1,5 @@
 <template>
-  <v-container id="worksamples" fluid class="py-13">
+  <v-container id="worksamples" fluid>
     <v-row>
       <v-row justify="center" align="center" class="mx-12">
         <v-col v-for="sample in samples" :key="sample.title" cols="10" md="3">

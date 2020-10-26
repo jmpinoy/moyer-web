@@ -45,8 +45,8 @@
     name: 'Team',
     props: {
         tileId: {
-            type: String,
-            default: ''
+          type: String,
+          default: ''
         },
         tileTitle: {
           type: String,

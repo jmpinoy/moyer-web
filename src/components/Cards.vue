@@ -1,5 +1,5 @@
 <template>
-  <v-container :id="cardId" class="py-16">
+  <v-container :id="cardId">
     <v-row align="center" justify="center">
       <v-col>
         <v-row justify="center" v-if="cardSubtitle" class="subtitle-1 blue--text font-weight-black py-4">
