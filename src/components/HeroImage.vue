@@ -1,16 +1,16 @@
 <template>
-  <v-container id="heroImage" class="py-16">
+  <v-container id="heroImage">
     <v-row align="center" justify="space-around">
-      <v-col cols="11" md="6">
+      <v-col cols="12" md="6">
         <v-card flat class="px-8">
           <v-img
           contain
           :src="image" />
         </v-card>
       </v-col>
-      <v-col justify="center" align="center" cols="11" md="6">
+      <v-col justify="center" align="center" cols="12" md="6">
         <v-card flat class="px-8">
-          <v-col cols="11" md="8">
+          <v-col cols="12" md="8">
             <v-row class="display-3 font-weight-bold py-4">
               {{ title }}
             </v-row>

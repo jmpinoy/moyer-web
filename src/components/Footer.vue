@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="text-no-wrap py-16">
+  <v-footer class="text-no-wrap">
     <v-col cols="1">
       <v-col>
         <div class="text-h5 font-weight-medium ma-4"> MOYER CABINETS </div>
