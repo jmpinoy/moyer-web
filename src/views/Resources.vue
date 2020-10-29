@@ -6,20 +6,23 @@
       :title="heroImage.title"
       orientation="left"
       :image="heroImage.img"
-      :description="heroImage.description" />
+      :description="heroImage.description"
+      class="pb-16" />
 
     <Tiles
       tileId="terms"
       tileSubtitle="Common Terms"
       tileTitle="Common cabinet terms"
-      :tiles="terms" />
+      :tiles="terms"
+      class="pb-16" />
 
     
     <Cards
       cardId="partners"
       cardSubtitle="Our Partners"
       cardTitle="A headline about vendors"
-      :cards="partners" />
+      :cards="partners"
+      class="pb-16" />
   </div>
 </template>
 

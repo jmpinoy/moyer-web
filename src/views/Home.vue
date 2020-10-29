@@ -1,12 +1,10 @@
 <template>
   <div class="home">
-    <HeroImage />
-    <Statement />
-    <WorkSamples />
-
-    <Cards cardId="testimonials" :cards="testimonials" />
-
-    <Contact />
+    <HeroImage class="pb-16" />
+    <Statement class="pb-16" />
+    <WorkSamples class="pb-16" />
+    <Cards cardId="testimonials" :cards="testimonials" class="pb-16" />
+    <Contact class="pb-16" />
   </div>
 </template>
 
