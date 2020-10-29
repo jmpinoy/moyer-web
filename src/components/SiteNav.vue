@@ -8,7 +8,7 @@
     hide-on-scroll>
       <!-- Logo/Title -->
       <v-row justify="center" class="pt-3">
-        <v-toolbar-title class="blue--text font-weight-medium">
+        <v-toolbar-title id="logo" class="blue--text font-weight-medium">
           <h2  @click="GoHome"> 
           Moyer Cabinets
           </h2>
@@ -60,13 +60,11 @@ export default {
   data: () => ({
     drawer: false,
     buttons: [
-      // Remove this route for production //
-      // {
-      //   name: 'Components',
-      //   icon: '',
-      //   route: '/components',
-      // },
-      // -------------------------------- //
+      {
+        name: 'Home',
+        icon: '',
+        route: '/',
+      },
       {
         name: 'About',
         icon: '',
