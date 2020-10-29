@@ -49,76 +49,100 @@ export default {
     ],
     cards: [
       {
-        img: '/img/imagePlaceholder.png',
+        img: '/img/teamPlaceholder.png',
+        description: 'This is a test description',
         color: 'Blue',
-        room: 'Bedroom',
-        style: 'Modern'
+        roomType: 'Bedroom',
+        style: 'Modern',
+        index: 0
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Yellow',
-        room: 'Bedroom',
-        style: 'Rustic'
+        roomType: 'Bedroom',
+        style: 'Rustic',
+        index: 1
       },
       {
-        img: '/img/imagePlaceholder.png',
+        img: '/img/cabinetPlaceholder.png',
+        description: 'This is a test description',
         color: 'Yellow',
-        room: 'Living Room',
-        style: 'Modern'
+        roomType: 'Living Room',
+        style: 'Modern',
+        index: 2
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Blue',
-        room: 'Living Room',
-        style: 'Rustic'
+        roomType: 'Living Room',
+        style: 'Rustic',
+        index: 3
       },
       {
-        img: '/img/imagePlaceholder.png',
+        img: '/img/moyerDiagram.png',
+        description: 'This is a test description',
         color: 'Yellow',
-        room: 'Kitchen',
-        style: 'Minimalist'
+        roomType: 'Kitchen',
+        style: 'Minimalist',
+        index: 4
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Blue',
-        room: 'Bedroom',
-        style: 'Minimalist'
+        roomType: 'Bedroom',
+        style: 'Minimalist',
+        index: 5
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Red',
-        room: 'Living Room',
-        style: 'Minimalist'
+        roomType: 'Living Room',
+        style: 'Minimalist',
+        index: 6
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Blue',
-        room: 'Bedroom',
-        style: 'Minimalist'
+        roomType: 'Bedroom',
+        style: 'Minimalist',
+        index: 7
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Red',
-        room: 'Bedroom',
-        style: 'Modern'
+        roomType: 'Bedroom',
+        style: 'Modern',
+        index: 8
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Blue',
-        room: 'Kitchen',
-        style: 'Modern'
+        roomType: 'Kitchen',
+        style: 'Modern',
+        index: 9
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Red',
-        room: 'Kitchen',
-        style: 'Rustic'
+        roomType: 'Kitchen',
+        style: 'Rustic',
+        index: 10
       },
       {
         img: '/img/imagePlaceholder.png',
+        description: 'This is a test description',
         color: 'Blue',
-        room: 'Living Room',
-        style: 'Rustic'
+        roomType: 'Living Room',
+        style: 'Rustic',
+        index: 11
       },
     ]
   })

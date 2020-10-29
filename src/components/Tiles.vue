@@ -8,14 +8,15 @@
         <v-row justify="center" class="display-2 font-weight-black pb-15">
           {{ tileTitle }}
         </v-row>
-        <v-row justify="center">
+        <v-row justify="center" align="center">
           <v-col
           v-for="(tile, t) in tiles"
           :key="t"
-          class="d-flex child-flex"
-          cols="10" md="3">
-            <v-card class="text-center" flat>
+          cols="6" md="3">
+            <v-card class="text-center transparent" flat>
               <v-img
+                height="300"
+                contain
                 :src="tile.img"
                 class="grey lighten-2" />              
                 <v-card-text class="title font-weight-bold">

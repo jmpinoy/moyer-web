@@ -60,13 +60,11 @@ export default {
   data: () => ({
     drawer: false,
     buttons: [
-      // Remove this route for production //
-      // {
-      //   name: 'Components',
-      //   icon: '',
-      //   route: '/components',
-      // },
-      // -------------------------------- //
+      {
+        name: 'Home',
+        icon: '',
+        route: '/',
+      },
       {
         name: 'About',
         icon: '',
