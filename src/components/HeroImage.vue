@@ -1,0 +1,53 @@
+<template>
+  <v-container id="heroImage">
+    <v-row align="center" justify="space-around">
+      <v-col cols="12" md="6">
+        <v-card flat class="px-8">
+          <v-img
+          contain
+          :src="image" />
+        </v-card>
+      </v-col>
+      <v-col justify="center" align="center" cols="12" md="6">
+        <v-card flat class="px-8">
+          <v-col cols="12" md="8">
+            <v-row class="display-3 font-weight-bold py-4">
+              {{ title }}
+            </v-row>
+            <v-row class="title font-weight-bold py-4">
+              {{ description }}
+            </v-row>
+            <v-row justify="center" align="center" class="py-4">
+              <v-col cols="12" md="8" lg="6" v-for="button in buttons" :key="button.name">
+                  <v-btn dark rounded large color="#b51600" :to="button.route">
+                    {{ button.name }}
+                  </v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+  export default {
+    name: 'HeroImage',
+    data: () => ({
+      image: "/img/moyerDiagram.png",
+      title: "We don't mess around around here.",
+      description: "Listen. Here's some good looking stuff for you to look at!",
+      buttons: [
+          {
+              name: "Residential",
+              route: "/residential",
+          },
+          {
+              name: "Commercial",
+              route: "/commercial",
+          },
+      ],
+    }),
+  }
+</script>

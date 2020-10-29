@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "tutorial-crud-app"
+  },
+  "targets": {
+    "tutorial-crud-app": {
+      "hosting": {
+        "moyerweb": [
+          "devmoyers"
+        ],
+        "crud": [
+          "tutorial-crud-app"
+        ]
+      }
+    }
+  }
+}
