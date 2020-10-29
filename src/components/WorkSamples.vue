@@ -1,26 +1,28 @@
 <template>
-  <v-container id="worksamples" fluid>
-    <v-row>
-      <v-row justify="center" align="center" class="mx-12">
-        <v-col v-for="sample in samples" :key="sample.title" cols="10" md="3">
-          <v-card flat class="py-6">
-            <v-row align="center" justify="center">
-              <v-img
+  <v-container id="worksamples">
+    <v-row justify="center" align="center">
+      <v-col>
+        <v-row justify="center" align="center" class="mx-12">
+          <v-col v-for="sample in samples" :key="sample.title" cols="10" md="3">
+            <v-card flat class="py-6">
+              <v-row align="center" justify="center">
+                <v-img
                   :src="require('../assets/logo.svg')"
                   contain
                   height="100" />
-            </v-row>
-            <v-row align="center" justify="center" class="font-weight-medium body-1">
-                {{ sample.title }}
-            </v-row>
-            <v-row align="center" justify="center" class="body-2">
-            <a :href="sample.href">
-                {{ sample.description }}
-            </a>
-            </v-row>
-          </v-card>
-        </v-col>
-      </v-row>
+              </v-row>
+              <v-row align="center" justify="center" class="font-weight-medium body-1">
+                  {{ sample.title }}
+              </v-row>
+              <v-row align="center" justify="center" class="body-2">
+              <a :href="sample.href">
+                  {{ sample.description }}
+              </a>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>

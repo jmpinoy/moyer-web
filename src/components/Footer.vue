@@ -3,13 +3,25 @@
     <v-row>
       <v-col class="pa-0 ma-0">
         <v-footer>
-          <v-row justify="center" align="center" class="pa-8 ma-8">
+          <v-row class="pa-8 ma-8">
             <v-col cols="10" md="3">
               <v-row class="text-h5 font-weight-medium ma-4"> MOYER CABINETS </v-row>
               <v-row class= "text-subtitle-2 ml-4 my-1"> 402-709-2039 </v-row> 
               <v-row class= "text-subtitle-2  mx-4 my-1"> moyercabinets@gmail.com </v-row>
               <v-row class ="text-subtitle-2 mx-4 my-1"> Monday - Friday: 7:00AM - 3:30PM </v-row>
               <v-row class ="text-subtitle-2 mx-4 my-1"> 1630 Vinton st Omaha, NE 68108 </v-row>
+              <v-btn
+              rounded
+              text
+              icon
+              color="blue"
+              class="white--text"
+              href="https://www.instagram.com/moyercabinets/"
+              target="_blank">
+                <v-icon>
+                  mdi-instagram
+                </v-icon>
+              </v-btn>
             </v-col>
             <v-col cols="10" md="8">
               <v-row>
@@ -26,7 +38,6 @@
                 </v-col>
               </v-row>
             </v-col>
-
             <!-- <v-col cols="10" md="8">
               <v-row>
                 <v-col

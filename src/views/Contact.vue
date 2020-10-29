@@ -5,10 +5,11 @@
       :subtitle="story.subtitle"
       :title="story.title"
       :image="story.img"
-      :description="story.description" />
+      :description="story.description"
+      class="pb-16" />
 
-    <Cards cardId="testimonials" :cards="testimonials" />
-    <WorkSamples />
+    <Cards cardId="testimonials" :cards="testimonials" class="pb-16" />
+    <WorkSamples class="pb-16" />
     
   </div>
 </template>

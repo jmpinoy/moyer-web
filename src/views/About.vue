@@ -5,13 +5,15 @@
       :subtitle="story.subtitle"
       :title="story.title"
       :image="story.img"
-      :description="story.description" />
+      :description="story.description"
+       class="pb-16" />
 
     <Tiles
       tileId="team"
       tileTitle="Meet the team"
       :tiles="employees"
-      :btn="join" />
+      :btn="join"
+      class="pb-16" />
 
     <Descriptor
       :descriptorId="shop.id"
@@ -19,7 +21,8 @@
       :title="shop.title"
       orientation="left"
       :image="shop.img"
-      :description="shop.description" />
+      :description="shop.description"
+      class="pb-16" />
   </div>
 </template>
 
