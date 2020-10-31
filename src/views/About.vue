@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div id="about">
     <Descriptor
       :descriptorId="story.id"
       :subtitle="story.subtitle"
