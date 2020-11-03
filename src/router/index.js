@@ -38,15 +38,69 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue')
-  },
-  {
-    path: '/manage',
-    name: 'Manage',
-    component: () => import(/* webpackChunkName: "manage" */ '../views/Manage.vue'),
+    component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Admin.vue'),
     meta: {
-      requiresAuth: true
-    }
+      redirect: true,
+      requiresAuth: false
+    },
+    children: [
+      {
+        path: '/admin/login',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Login.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/dashboard',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Dashboard.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/employees',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Employees.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/residential',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Residential.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/commercial',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Commercial.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/terms',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Terms.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/users',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Users.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      },
+      {
+        path: '/admin/settings',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Settings.vue'),
+        meta: {
+          requiresAuth: false
+        },
+      }
+    ]
   }
 ]
 
@@ -60,10 +114,11 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
+  if (to.meta.redirect) next({ path: '/admin/login' });
   if (requiresAuth && !auth.currentUser) {
-    next('/admin')
+    next('/admin/login');
   } else {
-    next()
+    next();
   }
 })
 

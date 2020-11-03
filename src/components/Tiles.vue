@@ -32,7 +32,7 @@
           {{ btn.title }}
         </v-row>
         <v-row v-if="btn" justify="center">            
-          <v-btn outlined large color="blue" :to="btn.route">
+          <v-btn outlined large color="blue" :href="btn.route">
             {{ btn.text }}
           </v-btn>
         </v-row>

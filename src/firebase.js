@@ -20,29 +20,23 @@ const db = firebase.firestore()
 const auth = firebase.auth()
 
 // collection references
+const usersCollection = db.collection('users')
 const employeesCollection = db.collection('employees')
 const residentialGalleryCollection = db.collection('residentialGallery')
-const residentialColorsCollection = db.collection('residentialColors')
-const residentialRoomTypesCollection = db.collection('residentialRoomTypes')
-const residentialStylesCollection = db.collection('residentialStyles')
+const residentialFiltersCollection = db.collection('residentialFilters')
 const commercialGalleryCollection = db.collection('commercialGallery')
-const commercialColorsCollection = db.collection('commercialColors')
-const commercialRoomTypesCollection = db.collection('commercialRoomTypes')
-const commercialStylesCollection = db.collection('commercialStyles')
+const commercialFiltersCollection = db.collection('commercialFilters')
 const termsCollection = db.collection('terms')
 
 // export utils/refs
 export {
   db,
   auth,
+  usersCollection,
   employeesCollection,
   residentialGalleryCollection,
-  residentialColorsCollection,
-  residentialRoomTypesCollection,
-  residentialStylesCollection,
+  residentialFiltersCollection,
   commercialGalleryCollection,
-  commercialColorsCollection,
-  commercialRoomTypesCollection,
-  commercialStylesCollection,
+  commercialFiltersCollection,
   termsCollection
 }

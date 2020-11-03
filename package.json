@@ -9,7 +9,6 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@jsanahuja/instagramfeed": "git+https://github.com/jsanahuja/InstagramFeed.git",
     "core-js": "^3.6.5",
     "firebase": "^7.24.0",
     "vue": "^2.6.11",

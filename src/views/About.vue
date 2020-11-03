@@ -29,6 +29,7 @@
 <script>
 import Descriptor from '@/components/Descriptor.vue'
 import Tiles from '@/components/Tiles.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'About',
@@ -52,53 +53,14 @@ export default {
       description: 'Our shop is located n a great place. Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. Ad nam minimum ponderum.<br><br>A second paragraph, shorter this time. Est audiam animal molestiae te. Ex duo eripuit mentitum.'
 
     },
-    employees: [
-      {
-        title: 'Rollie',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Eric',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Matt',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Caleb',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Employee1',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Employee2',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Employee3',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Employee4',
-        description: 'Position',
-        img: '/img/imagePlaceholder.png'
-      },
-    ],
     join: {
       title: 'Join our team',
       text: 'See Careers',
-      route: '/'
+      route: 'https://www.indeed.com/'
     }
   }),
+  computed: {
+    ...mapState(['employees'])
+  }
 }
 </script>

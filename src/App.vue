@@ -1,25 +1,34 @@
 <template>
   <v-app>
-    <SiteNav />
+    <SiteNav v-if="switchNav" />
+    <AdminNav v-if="!switchNav" />
     <v-main>
       <router-view />
     </v-main>
-    <Footer />
+    <Footer v-if="switchNav" />
   </v-app>
 </template>
 
 <script>
 import SiteNav from './components/SiteNav';
+import AdminNav from './components/admin/AdminNav';
 import Footer from './components/Footer';
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
 
   components: {
     SiteNav,
+    AdminNav,
     Footer
   },
-
+  computed: {
+    ...mapState(['userProfile']),
+    switchNav() {
+      return Object.keys(this.userProfile).length < 1;
+    }
+  },
   data: () => ({
   }),
 };

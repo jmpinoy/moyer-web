@@ -3,9 +3,6 @@
     <v-row>
       <v-col>
         <v-col align="center" justify="center">
-          <v-row justify="center" class="title blue--text font-weight-black">
-            Logout
-          </v-row>
           <v-row justify="center" class="display-1 font-weight-black py-3">
             Site Manager
           </v-row>
