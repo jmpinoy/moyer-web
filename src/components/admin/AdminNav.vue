@@ -86,11 +86,6 @@ export default {
         route: '/admin/terms',
       },
       {
-        name: 'Users',
-        icon: '',
-        route: '/admin/users',
-      },
-      {
         name: 'Settings',
         icon: '',
         route: '/admin/settings',

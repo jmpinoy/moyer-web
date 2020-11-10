@@ -8,35 +8,44 @@
           </v-row>
           <v-row justify="center">
             <v-col cols="8" md="3">
-              <v-combobox
+              <v-select
                 :items="colors"
                 label="Color"
                 v-model="colorFilter"
                 @input="filter()"
                 multiple
                 small-chips
+                deletable-chips
+                :menu-props="{ bottom: true, offsetY: true }"
+                attach
                 clearable
                 outlined />
             </v-col>
             <v-col cols="8" md="3">
-              <v-combobox
+              <v-select
                 :items="roomTypes"
                 label="Room Type"
                 v-model="roomTypeFilter"                
                 @input="filter()"
                 multiple
                 small-chips
+                deletable-chips
+                :menu-props="{ bottom: true, offsetY: true }"
+                attach
                 clearable
                 outlined />
             </v-col>
             <v-col cols="8" md="3">
-              <v-combobox
+              <v-select
                 :items="styles"
                 label="Style"
                 v-model="styleFilter"
                 @input="filter()"
                 multiple
                 small-chips
+                deletable-chips
+                :menu-props="{ bottom: true, offsetY: true }"
+                attach
                 clearable
                 outlined />
             </v-col>
@@ -57,7 +66,7 @@
         @click="image = room.index; overlay = true">
           <v-img
             height="200"
-            :src="room.img"
+            :src="findImage(room.img)"
             contain
             class="align-end">
             <v-row style="background:rgba(50,120,230,.1); color:rgb(30,75,180);">
@@ -86,9 +95,7 @@
                       rounded
                       small
                       icon
-                      :href="room.img"
-                      :download="room.img"
-                      target="_blank">
+                      @click.prevent="downloadImage(findImage(room.img), room.img)">
                       <v-icon>mdi-download</v-icon>
                     </v-btn>
                     <v-btn
@@ -101,7 +108,7 @@
                     </v-btn>
                   </v-card-actions>
                 <v-img
-                  :src="room.img"
+                  :src="findImage(room.img)"
                   contain
                   class="align-end pa-0 ma-0">
                   <v-card-actions class="justify-space-between">
@@ -135,93 +142,135 @@
         </v-card>
       </v-overlay>
     </v-row>
-    <v-row justify="center" class="display-1 font-weight-black py-10">
-      Don't see what you're looking for?
-    </v-row>
-    <v-row justify="center">            
-      <v-btn outlined large color="blue" to="/contact">
-        Contact Us
-      </v-btn>
-    </v-row>
-    <v-row justify="center" class="body-1 font-weight-light py-10">
-      We can build it custom for you, no problem. Just give us a ring.
+    <v-row justify="center" align="center">
+      <v-col cols="11">
+        <v-row justify="center" class="text-center display-1 font-weight-black py-10">
+          Don't see what you're looking for?
+        </v-row>
+        <v-row justify="center">            
+          <v-btn outlined large color="blue" to="/contact">
+            Contact Us
+          </v-btn>
+        </v-row>
+        <v-row justify="center" class="text-center body-1 font-weight-light py-10">
+          We can build it custom for you, no problem. Just give us a ring.
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'Residential',
-    props: {
-      galleryid: {
-        type: String,
-        default: ''
-      },
-      rooms: {
-        type: Array,
-        default: () => []
-      },
-      colors: {
-        type: Array,
-        default: () => []
-      },
-      roomTypes: {
-        type: Array,
-        default: () => []
-      },
-      styles: {
-        type: Array,
-        default: () => []
-      }
+import * as fb from '@/firebase'
+export default {
+  name: 'Gallery',
+  props: {
+    galleryid: {
+      type: String,
+      default: ''
     },
-    data: () => ({
-      colorFilter: [],
-      roomTypeFilter: [],
-      styleFilter: [],
-      filteredRooms: [],
-      overlay: false,
-      image: 0
-    }),
-    methods: {
-      filter() {
-        var filters = {
-          color: this.colorFilter,
-          roomType: this.roomTypeFilter,
-          style: this.styleFilter
+    rooms: {
+      type: Array,
+      default: () => []
+    },
+    colors: {
+      type: Array,
+      default: () => []
+    },
+    roomTypes: {
+      type: Array,
+      default: () => []
+    },
+    styles: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data: () => ({
+    images: [],
+    colorFilter: [],
+    roomTypeFilter: [],
+    styleFilter: [],
+    overlay: false,
+    image: 0
+  }),
+  methods: {
+    next () {
+      this.image = this.image + 1 === this.filteredRooms.length
+        ? 0
+        : this.image + 1
+    },
+    prev () {
+      this.image = this.image - 1 < 0
+        ? this.filteredRooms.length - 1
+        : this.image - 1
+    },
+    outside () {
+      this.overlay = false;
+    },
+    findImage(data) {
+      var tmp = {};
+      if (this.images.length < this.rooms.length) {
+        this.displayImage(data);
+      }
+      this.images.forEach(image => {
+        if (image.location === data) {
+          tmp = image;
         }
-        var filtered = this.rooms;
-        var temp = [];
-        for (var filter in filters) {
-          if (filters[filter].length != 0) {
-            for (var j = 0; j < filter.length; j++) {
-              for (var i = 0; i < filtered.length; i++) {
-                if (filtered[i][filter] === filters[filter][j]) {
-                  temp.push(filtered[i]);
-                }
+      });
+      return tmp.url;
+    },
+    async displayImage(data) {
+      var tmp = "";
+      await fb.storage.ref().child(data).getDownloadURL()
+        .then(function(result) {
+          tmp = result;
+        });
+        this.images.push({
+          location: data,
+          url: tmp
+        })
+      return tmp;
+    },
+    downloadImage(data, name) {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function(event) {
+        var blob = xhr.response;
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = name;
+        link.click();
+        URL.revokeObjectURL(link.href);
+      };
+      xhr.open('GET', data);
+      xhr.send();
+    }
+  },
+  computed: {
+    filteredRooms() {
+      var filters = {
+        color: this.colorFilter,
+        roomType: this.roomTypeFilter,
+        style: this.styleFilter
+      }
+      var filtered = this.rooms;
+      var temp = [];
+      for (var filter in filters) {
+        if (filters[filter].length != 0) {
+          for (var j = 0; j < filter.length; j++) {
+            for (var i = 0; i < filtered.length; i++) {
+              if (filtered[i][filter] === filters[filter][j]) {
+                temp.push(filtered[i]);
               }
             }
-            filtered = temp;
-            temp = [];
           }
+          filtered = temp;
+          temp = [];
         }
-        this.filteredRooms = filtered;
-      },
-      next () {
-        this.image = this.image + 1 === this.filteredRooms.length
-          ? 0
-          : this.image + 1
-      },
-      prev () {
-        this.image = this.image - 1 < 0
-          ? this.filteredRooms.length - 1
-          : this.image - 1
-      },
-      outside () {
-        this.overlay = false;
       }
-    },
-    mounted() {
-      this.filteredRooms = this.rooms;
+      return filtered;
     }
   }
+}
 </script>

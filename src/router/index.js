@@ -55,49 +55,42 @@ const routes = [
         path: '/admin/dashboard',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Dashboard.vue'),
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         },
       },
       {
         path: '/admin/employees',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Employees.vue'),
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         },
       },
       {
         path: '/admin/residential',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Residential.vue'),
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         },
       },
       {
         path: '/admin/commercial',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Commercial.vue'),
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         },
       },
       {
         path: '/admin/terms',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Terms.vue'),
         meta: {
-          requiresAuth: false
-        },
-      },
-      {
-        path: '/admin/users',
-        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Users.vue'),
-        meta: {
-          requiresAuth: false
+          requiresAuth: true
         },
       },
       {
         path: '/admin/settings',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Settings.vue'),
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         },
       }
     ]
