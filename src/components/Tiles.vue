@@ -17,7 +17,7 @@
               <v-img
                 height="300"
                 contain
-                :src="tile.img"
+                :src="findImage(tile.img)"
                 class="grey lighten-2" />              
                 <v-card-text class="title font-weight-bold">
                   {{ tile.title }}
@@ -32,7 +32,7 @@
           {{ btn.title }}
         </v-row>
         <v-row v-if="btn" justify="center">            
-          <v-btn outlined large color="blue" :to="btn.route">
+          <v-btn outlined large color="blue" :href="btn.route" target="_blank">
             {{ btn.text }}
           </v-btn>
         </v-row>
@@ -42,31 +42,60 @@
 </template>
 
 <script>
-  export default {
-    name: 'Team',
-    props: {
-        tileId: {
-          type: String,
-          default: ''
-        },
-        tileTitle: {
-          type: String,
-          default: ''
-        },
-        tileSubtitle: {
-          type: String,
-          default: ''
-        },
-        tiles: {
-          type: Array,
-          default: () => []
-        },
-        btn: {
-          type: Object,
-          default: () => {}
-        },
+import * as fb from '@/firebase'
+
+export default {
+  name: 'Team',
+  props: {
+      tileId: {
+        type: String,
+        default: ''
+      },
+      tileTitle: {
+        type: String,
+        default: ''
+      },
+      tileSubtitle: {
+        type: String,
+        default: ''
+      },
+      tiles: {
+        type: Array,
+        default: () => []
+      },
+      btn: {
+        type: Object,
+        default: () => {}
+      },
+  },
+  data: () => ({  
+  images: [],    
+  }),
+  methods: {
+    findImage(data) {
+      var tmp = {};
+      if (this.images.length < this.tiles.length) {
+        this.displayImage(data);
+      }
+      this.images.forEach(image => {
+        if (image.location === data) {
+          tmp = image;
+        }
+      });
+      return tmp.url;
     },
-    data: () => ({      
-    }),
+    async displayImage(data) {
+      var tmp = "";
+      await fb.storage.ref().child(data).getDownloadURL()
+        .then(function(result) {
+          tmp = result;
+        });
+        this.images.push({
+          location: data,
+          url: tmp
+        })
+      return tmp;
+    }
   }
+}
 </script>

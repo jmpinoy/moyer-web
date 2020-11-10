@@ -1,5 +1,5 @@
 <template>
-  <v-container id="site-nav">
+  <v-container class="admin-nav">
     <v-app-bar
     app
     height="80"
@@ -21,7 +21,7 @@
       <!-- Navigation Buttons -->
       <v-toolbar-items v-for="button in buttons" :key="button.name" class="hidden-md-and-down">
         <v-btn
-          :to="button.route"
+          @click="GoTo(button.route)"
           text>
         {{ button.name }}
         </v-btn>
@@ -37,7 +37,7 @@
       temporary>
         <v-list nav dense>
           <v-list-item-group v-for="button in buttons" :key="button.name">
-            <v-list-item :to="button.route" link>
+            <v-list-item @click="GoTo(button.route)" link>
               <v-list-item-icon>
                 {{ button.icon }}
               </v-list-item-icon>
@@ -56,45 +56,48 @@
 <script>
 
 export default {
-  name: 'SiteNav',
+  name: 'AdminNav',
   data: () => ({
     drawer: false,
     buttons: [
       {
-        name: 'Home',
+        name: 'Dashboard',
         icon: '',
-        route: '/',
+        route: '/admin/dashboard',
       },
       {
-        name: 'About',
+        name: 'Employees',
         icon: '',
-        route: '/about',
+        route: '/admin/employees',
       },
       {
         name: 'Residential',
         icon: '',
-        route: '/residential',
+        route: '/admin/residential',
       },
       {
         name: 'Commercial',
         icon: '',
-        route: '/commercial',
+        route: '/admin/commercial',
       },
       {
-        name: 'Resources',
+        name: 'Terms',
         icon: '',
-        route: '/resources',
+        route: '/admin/terms',
       },
       {
-        name: 'Contact',
+        name: 'Settings',
         icon: '',
-        route: 'contact',
-      },
+        route: '/admin/settings',
+      }
     ],
   }),
   methods: {
     GoHome() {
-      return this.$router.push('/');
+      return this.$router.push('/admin/dashboard');
+    },
+    GoTo(route) {
+      return this.$router.push(route);
     }
   }
 }
