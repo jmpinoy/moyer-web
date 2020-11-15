@@ -1,42 +1,39 @@
 <template>
-  <v-container :id="tileId" class="py-16">
+  <v-container :id="tileId">
+    <v-row justify="center" v-if="tileSubtitle" class="title blue--text font-weight-black py-4">
+      {{ tileSubtitle }}
+    </v-row>
+    <v-row justify="center" class="display-2 font-weight-black pb-15">
+      {{ tileTitle }}
+    </v-row>
     <v-row justify="center" align="center">
-      <v-col>
-        <v-row justify="center" v-if="tileSubtitle" class="title blue--text font-weight-black py-4">
-          {{ tileSubtitle }}
-        </v-row>
-        <v-row justify="center" class="display-2 font-weight-black pb-15">
-          {{ tileTitle }}
-        </v-row>
-        <v-row justify="center" align="center">
-          <v-col
-          v-for="(tile, t) in tiles"
-          :key="t"
-          cols="6" md="3">
-            <v-card class="text-center transparent" flat>
-              <v-img
-                height="300"
-                contain
-                :src="findImage(tile.img)"
-                class="grey lighten-2" />              
-                <v-card-text class="title font-weight-bold">
-                  {{ tile.title }}
-                </v-card-text>
-                <v-card-text class="subtitle-1 font-weight-medium">
-                  {{ tile.description }}
-                </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-        <v-row v-if="btn" justify="center" class="display-1 font-weight-black py-10">
-          {{ btn.title }}
-        </v-row>
-        <v-row v-if="btn" justify="center">            
-          <v-btn outlined large color="blue" :href="btn.route" target="_blank">
-            {{ btn.text }}
-          </v-btn>
-        </v-row>
+      <v-col
+      v-for="(tile, t) in tiles"
+      :key="t"
+      class="d-flex child-flex"
+      cols="6" md="3">
+        <v-card class="text-center transparent" flat>
+          <v-img
+            height="250"
+            contain
+            :src="tile.img"
+            class="grey lighten-2" />              
+            <v-card-text class="title font-weight-bold">
+              {{ tile.title }}
+            </v-card-text>
+            <v-card-text class="subtitle-1 font-weight-medium">
+              {{ tile.description }}
+            </v-card-text>
+        </v-card>
       </v-col>
+    </v-row>
+    <v-row v-if="btn" justify="center" class="display-1 font-weight-black py-10">
+      {{ btn.title }}
+    </v-row>
+    <v-row v-if="btn" justify="center">            
+      <v-btn outlined large color="blue" :href="btn.route" target="_blank">
+        {{ btn.text }}
+      </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -69,33 +66,6 @@ export default {
       },
   },
   data: () => ({  
-  images: [],    
   }),
-  methods: {
-    findImage(data) {
-      var tmp = {};
-      if (this.images.length < this.tiles.length) {
-        this.displayImage(data);
-      }
-      this.images.forEach(image => {
-        if (image.location === data) {
-          tmp = image;
-        }
-      });
-      return tmp.url;
-    },
-    async displayImage(data) {
-      var tmp = "";
-      await fb.storage.ref().child(data).getDownloadURL()
-        .then(function(result) {
-          tmp = result;
-        });
-        this.images.push({
-          location: data,
-          url: tmp
-        })
-      return tmp;
-    }
-  }
 }
 </script>

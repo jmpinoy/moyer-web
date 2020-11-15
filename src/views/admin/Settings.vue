@@ -16,7 +16,7 @@
                   v-model="alert"
                   :timeout="timeout"
                   top>
-                  <p v-if="errorMsg !== ''" class="error">
+                  <p v-if="errorMsg !== ''">
                     {{ errorMsg }}
                   </p>
                   <p v-else>
@@ -47,7 +47,7 @@
                               <span
                                 v-if="open"
                                 key="0">
-                                Enter new email, verification e-mail will be sent. You will be logged out until verified.
+                                Enter new email. You will be logged out when changed.
                               </span>
                             </v-fade-transition>
                           </v-col>
@@ -147,7 +147,6 @@ export default {
       this.message = '';
 
       try {
-          await auth.currentUser.sendEmailVerification();
           await auth.currentUser.updateEmail(this.email);
           this.message = "Success! Email changed.";
           this.alert = true;

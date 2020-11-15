@@ -53,7 +53,7 @@
         </v-col>
       </v-col>
     </v-row>
-    <v-row justify="center" class="pb-10">      
+    <v-row justify="center" class="pb-10">
       <v-col
       v-for="(room, r) in filteredRooms"
       :key="r"
@@ -66,7 +66,7 @@
         @click="image = room.index; overlay = true">
           <v-img
             height="200"
-            :src="findImage(room.img)"
+            :src="room.img"
             contain
             class="align-end">
             <v-row style="background:rgba(50,120,230,.1); color:rgb(30,75,180);">
@@ -81,6 +81,7 @@
         v-model="overlay">
         <v-card 
           v-click-outside="outside"
+          :width="cardWidth"
           flat>
           <v-window
             v-model="image"
@@ -95,7 +96,7 @@
                       rounded
                       small
                       icon
-                      @click.prevent="downloadImage(findImage(room.img), room.img)">
+                      @click.prevent="room.img">
                       <v-icon>mdi-download</v-icon>
                     </v-btn>
                     <v-btn
@@ -108,7 +109,7 @@
                     </v-btn>
                   </v-card-actions>
                 <v-img
-                  :src="findImage(room.img)"
+                  :src="room.img"
                   contain
                   class="align-end pa-0 ma-0">
                   <v-card-actions class="justify-space-between">
@@ -208,44 +209,6 @@ export default {
     outside () {
       this.overlay = false;
     },
-    findImage(data) {
-      var tmp = {};
-      if (this.images.length < this.rooms.length) {
-        this.displayImage(data);
-      }
-      this.images.forEach(image => {
-        if (image.location === data) {
-          tmp = image;
-        }
-      });
-      return tmp.url;
-    },
-    async displayImage(data) {
-      var tmp = "";
-      await fb.storage.ref().child(data).getDownloadURL()
-        .then(function(result) {
-          tmp = result;
-        });
-        this.images.push({
-          location: data,
-          url: tmp
-        })
-      return tmp;
-    },
-    downloadImage(data, name) {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        var blob = xhr.response;
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = name;
-        link.click();
-        URL.revokeObjectURL(link.href);
-      };
-      xhr.open('GET', data);
-      xhr.send();
-    }
   },
   computed: {
     filteredRooms() {
@@ -270,7 +233,17 @@ export default {
         }
       }
       return filtered;
-    }
+    },    
+    cardWidth () {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return 200
+        case 'sm': return 250
+        case 'md': return 300
+        case 'lg': return 400
+        case 'xl': return 500
+        default: return 300
+      }
+    },
   }
 }
 </script>

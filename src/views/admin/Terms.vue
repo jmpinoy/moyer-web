@@ -14,6 +14,24 @@
             Click term to edit
           </p>
           </v-row>
+          <v-snackbar
+            light
+            v-model="alert"
+            :timeout="timeout"
+            top>
+            <p>
+              {{ errorMsg }}
+            </p>
+            <template v-slot:action="{ attrs }">
+              <v-btn
+                color="blue"
+                text
+                v-bind="attrs"
+                @click="alert = false" >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
           <v-row justify="center">
             <v-btn
               color="blue"
@@ -26,7 +44,6 @@
             <v-overlay
               v-model="upload">
               <v-card
-                v-click-outside="exit"
                 light
                 color="white"
                 flat>
@@ -35,7 +52,6 @@
                     <v-card
                       flat
                       light
-                      v-click-outside="exit"
                       class="mx-auto"
                       max-width="300"
                       color="white">
@@ -49,6 +65,7 @@
                         Picture
                       </v-card-subtitle>
                       <v-btn
+                        v-if="!img"
                         color="blue"
                         @click="onClick"
                         dark>
@@ -61,13 +78,13 @@
                         @change="preview"
                         accept="images/*">
                       <v-card-subtitle>
-                        Name
+                        Term
                       </v-card-subtitle>
                       <v-text-field
                         v-model="title"
                         placeholder="Name" />
                       <v-card-subtitle>
-                        Position
+                        Definition
                       </v-card-subtitle>
                       <v-text-field
                         v-model="description"
@@ -123,7 +140,6 @@
             <v-overlay
               v-model="update">
               <v-card
-                v-click-outside="exit"
                 light
                 color="white"
                 flat>
@@ -137,7 +153,6 @@
                         <v-card
                           flat
                           light
-                          v-click-outside="exit"
                           class="mx-auto"
                           max-width="300"
                           color="white">
@@ -148,13 +163,13 @@
                             :src="term.img"
                             contain />
                           <v-card-subtitle>
-                            Change Name
+                            Change Term
                           </v-card-subtitle>
                           <v-text-field
                             v-model="title"
                             :placeholder="term.title" />
                           <v-card-subtitle>
-                            Change Position
+                            Change Definition
                           </v-card-subtitle>
                           <v-text-field
                             v-model="description"
@@ -206,7 +221,10 @@ export default {
     description: '',
     img: '',
     imgRef: '',
-    imageData: null
+    imageData: null,
+    errorMsg: '',
+    alert: false,
+    timeout: 2500,
   }),
   computed: {
     ...mapState(['terms']),
@@ -232,7 +250,7 @@ export default {
       this.onUpload();
     },
     onUpload() {
-      this.imgRef = `terms/${this.imageData.name}`;
+      this.imgRef = `terms/${this.imageData.name}_${Math.ceil(Math.random()*100000)}`;
       const storageRef = fb.storage.ref(this.imgRef).put(this.imageData);
       storageRef.on(`state_changed`, snapshot => {
         this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;},
@@ -271,7 +289,12 @@ export default {
         imgRef: this.imgRef,
         index: this.terms.length
       }
+      if (this.imgRef) {
       this.createTerm(post);
+      } else {
+        this.errorMsg = 'Image Required';
+        this.alert = true;
+      }
       this.title = '';
       this.description = '';
       this.img = '';

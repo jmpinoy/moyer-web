@@ -52,13 +52,6 @@ const routes = [
         },
       },
       {
-        path: '/admin/dashboard',
-        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Dashboard.vue'),
-        meta: {
-          requiresAuth: true
-        },
-      },
-      {
         path: '/admin/employees',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Employees.vue'),
         meta: {

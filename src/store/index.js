@@ -54,9 +54,9 @@ const store = new Vuex.Store({
       // set user profile in state
       commit('setUserProfile', userProfile.data())
 
-      // change route to dashboard
+      // change route to employees
       if (router.currentRoute.path === '/admin/login') {
-        router.push('/admin/dashboard')
+        router.push('/admin/employees')
       }
     },
     async logout({ commit }) {
@@ -78,20 +78,10 @@ const store = new Vuex.Store({
         });
       return 
     },
-    async uploadImage({ commit }, data) {
-
-      await fb.storage.ref().child(`images/${data.name}`).put(data)
-        .then(function() {
-          console.log('Image uploaded successfully!');
-        }).catch(function(err) {
-          console.log('Failed to upload: ', err);
-        });
-    },
     async removeImage({ commit }, data) {
 
       await fb.storage.ref().child(data).delete()
         .then(function() {
-          console.log('Image removed successfully!');
         }).catch(function(err) {
           console.log('Failed to remove: ', err);
         });
@@ -99,22 +89,19 @@ const store = new Vuex.Store({
     // EMPLOYEES
     async fetchEmployees({ commit }) {
       fb.employeesCollection.onSnapshot(snapshot => {
-        let dataArray = []
-      
+        let dataArray = []      
         snapshot.forEach(doc => {
           let data = doc.data()
           data.id = doc.id
           dataArray.push(data)
         })
         dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
-      
         commit('setEmployees', dataArray)
       })
     },
     async createEmployee({ commit }, data) {
       await fb.employeesCollection.add(data)
       .then(function() {
-        console.log("Employee successfully created.");
       }).catch(function(err) {
         console.error("Error creating employee: ", err);
       });
@@ -122,19 +109,32 @@ const store = new Vuex.Store({
     async updateEmployee({ commit }, data) {
       let update = {
         title: data.title,
-        description: data.description,
-        index: data.index
+        description: data.description
       };
       fb.employeesCollection.doc(data.id).update(update)
       .then(function() {
-        console.log("Employee successfully updated.");
       }).catch(function(err) {
         console.error("Error updating employee: ", err);
       });
     },
     async removeEmployee({ commit }, data) {
       fb.employeesCollection.doc(data).delete().then(function() {
-        console.log("Employee successfully removed.");
+        fb.employeesCollection.onSnapshot(snapshot => {
+          let dataArray = []      
+          snapshot.forEach(doc => {
+            let data = doc.data()
+            data.id = doc.id
+            dataArray.push(data)
+          })
+          dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
+          var i = 0
+          dataArray.forEach(data => {
+            fb.employeesCollection.doc(data.id).update({
+              index: i
+            })
+            i++
+          })
+        })
       }).catch(function(err) {
         console.error("Error removing employee: ", err);
       });
@@ -142,49 +142,51 @@ const store = new Vuex.Store({
     // RESIDENTIAL GALLERY
     async fetchResidentialGallery({ commit }) {
       fb.residentialGalleryCollection.onSnapshot(snapshot => {
-        let dataArray = []
-      
+        let dataArray = []      
         snapshot.forEach(doc => {
           let data = doc.data()
           data.id = doc.id
           dataArray.push(data)
         })
-        dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
-      
+        dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);      
         commit('setResidentialGallery', dataArray)
       })
     },
     async createResidentialPost({ commit }, data) {
-      await fb.residentialGalleryCollection.add({
-        img: data.img,
-        description: data.description,
-        color: data.color,
-        roomType: data.roomType,
-        style: data.style,
-        index: data.index
-      }).then(function() {
-        console.log("Post successfully created.");
+      await fb.residentialGalleryCollection.add(data)
+      .then(function() {
       }).catch(function(err) {
         console.error("Error creating post: ", err);
       });
     },
     async updateResidentialPost({ commit }, data) {
       fb.residentialGalleryCollection.doc(data.id).update({
-        img: data.img,
-        description: data.description,
         color: data.color,
         roomType: data.roomType,
-        style: data.style,
-        index: data.index
+        style: data.style
       }).then(function() {
-        console.log("Post successfully updated.");
       }).catch(function(err) {
         console.error("Error updating post: ", err);
       });
     },
     async removeResidentialPost({ commit }, data) {
-      fb.residentialGalleryCollection.doc(data.id).delete().then(function() {
-        console.log("Post successfully removed.");
+      fb.residentialGalleryCollection.doc(data).delete().then(function() {
+        fb.residentialGalleryCollection.onSnapshot(snapshot => {
+          let dataArray = []      
+          snapshot.forEach(doc => {
+            let data = doc.data()
+            data.id = doc.id
+            dataArray.push(data)
+          })
+          dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
+          var i = 0
+          dataArray.forEach(data => {
+            fb.residentialGalleryCollection.doc(data.id).update({
+              index: i
+            })
+            i++
+          })
+        })
       }).catch(function(err) {
         console.error("Error removing post: ", err);
       });
@@ -192,63 +194,80 @@ const store = new Vuex.Store({
     // RESIDENTIAL FILTERS
     async fetchResidentialFilters({ commit }) {
       fb.residentialFiltersCollection.onSnapshot(snapshot => {
-        let dataArray = []
-      
+        let dataArray = []      
         snapshot.forEach(doc => {
           let data = doc.data()
           data.id = doc.id
           dataArray.push(data)
-        })
-      
+        })      
         commit('setResidentialFilters', dataArray)
       })
+    },
+    async addResidentialFilters({ commit }, data) {
+      fb.residentialFiltersCollection.doc(data.id).update({
+        filters: fb.fv.arrayUnion(data.data)
+      })
+      .then(function() {
+      }).catch(function(err) {
+        console.error(`Error updating ${data.id}: , ${err}`);
+      });
+    },
+    async removeResidentialFilters({ commit }, data) {
+      fb.residentialFiltersCollection.doc(data.id).update({
+        filters: fb.fv.arrayRemove(data.data)
+      }).then(function() {
+      }).catch(function(err) {
+        console.error(`Error removing ${data.id}: , ${err}`);
+      });
     },
     // COMMERCIAL GALLERY
     async fetchCommercialGallery({ commit }) {
       fb.commercialGalleryCollection.onSnapshot(snapshot => {
-        let dataArray = []
-      
+        let dataArray = []      
         snapshot.forEach(doc => {
           let data = doc.data()
           data.id = doc.id
           dataArray.push(data)
         })
-        dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
-      
+        dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);      
         commit('setCommercialGallery', dataArray)
       })
     },
     async createCommercialPost({ commit }, data) {
-      await fb.commercialGalleryCollection.add({
-        img: data.img,
-        description: data.description,
-        color: data.color,
-        roomType: data.roomType,
-        style: data.style,
-        index: data.index
-      }).then(function() {
-        console.log("Post successfully created.");
+      await fb.commercialGalleryCollection.add(data)
+      .then(function() {
       }).catch(function(err) {
         console.error("Error creating post: ", err);
       });
     },
     async updateCommercialPost({ commit }, data) {
       fb.commercialGalleryCollection.doc(data.id).update({
-        img: data.img,
-        description: data.description,
         color: data.color,
         roomType: data.roomType,
-        style: data.style,
-        index: data.index
+        style: data.style
       }).then(function() {
-        console.log("Post successfully updated.");
       }).catch(function(err) {
         console.error("Error updating post: ", err);
       });
     },
     async removeCommercialPost({ commit }, data) {
-      fb.commercialGalleryCollection.doc(data.id).delete().then(function() {
-        console.log("Post successfully removed.");
+      fb.commercialGalleryCollection.doc(data).delete().then(function() {
+        fb.commercialGalleryCollection.onSnapshot(snapshot => {
+          let dataArray = []      
+          snapshot.forEach(doc => {
+            let data = doc.data()
+            data.id = doc.id
+            dataArray.push(data)
+          })
+          dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
+          var i = 0
+          dataArray.forEach(data => {
+            fb.commercialGalleryCollection.doc(data.id).update({
+              index: i
+            })
+            i++
+          })
+        })
       }).catch(function(err) {
         console.error("Error removing post: ", err);
       });
@@ -256,35 +275,47 @@ const store = new Vuex.Store({
     // COMMERCIAL FILTERS
     async fetchCommercialFilters({ commit }) {
       fb.commercialFiltersCollection.onSnapshot(snapshot => {
-        let dataArray = []
-      
+        let dataArray = []      
         snapshot.forEach(doc => {
           let data = doc.data()
           data.id = doc.id
-          dataArray.push(data)
-        })
+          dataArray.push(data)        })
       
         commit('setCommercialFilters', dataArray)
       })
     },
+    async addCommercialFilters({ commit }, data) {
+      fb.commercialFiltersCollection.doc(data.id).update({
+        filters: fb.fv.arrayUnion(data.data)
+      })
+      .then(function() {
+      }).catch(function(err) {
+        console.error(`Error updating ${data.id}: , ${err}`);
+      });
+    },
+    async removeCommercialFilters({ commit }, data) {
+      fb.commercialFiltersCollection.doc(data.id).update({
+        filters: fb.fv.arrayRemove(data.data)
+      }).then(function() {
+      }).catch(function(err) {
+        console.error(`Error removing ${data.id}: , ${err}`);
+      });
+    },
     // TERMS
     async fetchTerms({ commit }) {
       fb.termsCollection.onSnapshot(snapshot => {
-        let dataArray = []
-      
+        let dataArray = []      
         snapshot.forEach(doc => {
           let data = doc.data()
           data.id = doc.id
           dataArray.push(data)
         })
-        dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
-      
+        dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);      
         commit('setTerms', dataArray)
       })
     },
     async createTerm({ commit }, data) {
       await fb.termsCollection.add(data).then(function() {
-        console.log("Term successfully created.");
       }).catch(function(err) {
         console.error("Error creating term: ", err);
       });
@@ -295,14 +326,28 @@ const store = new Vuex.Store({
         description: data.description
       })
       .then(function() {
-        console.log("Term successfully updated.");
       }).catch(function(err) {
         console.error("Error updating term: ", err);
       });
     },
     async removeTerm({ commit }, data) {
       fb.termsCollection.doc(data).delete().then(function() {
-        console.log("Term successfully removed.");
+        fb.termsCollection.onSnapshot(snapshot => {
+          let dataArray = []      
+          snapshot.forEach(doc => {
+            let data = doc.data()
+            data.id = doc.id
+            dataArray.push(data)
+          })
+          dataArray.sort((a, b) => (a.index > b.index) ? 1 : -1);
+          var i = 0
+          dataArray.forEach(data => {
+            fb.termsCollection.doc(data.id).update({
+              index: i
+            })
+            i++
+          })
+        })
       }).catch(function(err) {
         console.error("Error removing term: ", err);
       });

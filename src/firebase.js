@@ -20,6 +20,7 @@ firebase.initializeApp(firebaseConfig)
 const db = firebase.firestore()
 const auth = firebase.auth()
 const storage = firebase.storage()
+const fv = firebase.firestore.FieldValue
 
 // collection references
 const usersCollection = db.collection('users')
@@ -41,5 +42,6 @@ export {
   residentialFiltersCollection,
   commercialGalleryCollection,
   commercialFiltersCollection,
-  termsCollection
+  termsCollection,
+  fv
 }

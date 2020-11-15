@@ -10,10 +10,11 @@
             Moyer Cabinets Web Manager
           </v-row>
           <v-snackbar
+            light
             v-model="alert"
             :timeout="timeout"
             top>
-            <p class="error">
+            <p>
               {{ errorMsg }}
             </p>
             <template v-slot:action="{ attrs }">
@@ -26,7 +27,7 @@
               </v-btn>
             </template>
           </v-snackbar>
-          <v-row align="center" justify="center" class="pa-16 ma-16">
+          <v-row v-if="!forgot" align="center" justify="center" class="pa-16 ma-16">
             <v-form
               ref="form"
               v-model="valid"
@@ -44,14 +45,60 @@
                 @click:append="show = !show"
                 label="Password"
                 required />
-              <v-btn
-                :disabled="!valid"
-                color="blue"
-                dark
-                @click="login()"
-                class="ma-4">
-                Login
-              </v-btn>
+                <v-col cols="6">
+                  <v-row justify="center">
+                    <v-btn
+                      :disabled="!valid"
+                      color="blue"
+                      dark
+                      @click="login()"
+                      class="ma-4">
+                      Login
+                    </v-btn>
+                  </v-row>
+                  <v-row justify="center">
+                    <v-btn
+                      color="blue"
+                      small
+                      text
+                      @click="forgot = true" >
+                      Forgot Password
+                    </v-btn>
+                  </v-row>
+                </v-col>
+            </v-form>
+          </v-row>
+          <v-row v-else align="center" justify="center" class="pa-16 ma-16">
+            <v-form
+              ref="form"
+              v-model="valid"
+              lazy-validation>
+              <v-text-field
+                v-model="user.email"
+                :rules="emailRules"
+                label="E-mail"
+                required />
+                <v-col cols="6">
+                  <v-row justify="center">
+                    <v-btn
+                      :disabled="!valid"
+                      color="blue"
+                      dark
+                      @click="resetPassword()"
+                      class="ma-4">
+                      Send
+                    </v-btn>
+                  </v-row>
+                  <v-row justify="center">
+                    <v-btn
+                      color="blue"
+                      small
+                      text
+                      @click="forgot = false" >
+                      Sign In
+                    </v-btn>
+                  </v-row>
+                </v-col>
             </v-form>
           </v-row>
         </v-col>
@@ -69,11 +116,12 @@ export default {
   components: {
   },
   data: () => ({
-    valid: true,
+    forgot: false,
+    valid: false,
     show: false,
     errorMsg: '',
     alert: false,
-    timeout: 2000,
+    timeout: 2500,
     user: {
       email: '',
       password: ''
@@ -93,21 +141,27 @@ export default {
 
       try {
         const { user } = await auth.signInWithEmailAndPassword(this.user.email, this.user.password);
-        if (user.emailVerified) {
-          this.$store.dispatch('login', {
-            email: this.user.email,
-            password: this.user.password
-          });
-        }
-        else {
-          this.errorMsg = "E-mail not verified.";
-          this.alert = true;
-        }
+        this.$store.dispatch('login', {
+          email: this.user.email,
+          password: this.user.password
+        });
       } catch (err) {
           this.errorMsg = err.message;
           this.alert = true;
       }
-    }
+    },    
+    async resetPassword() {
+      this.errorMsg = '';
+
+      try {
+          await auth.sendPasswordResetEmail(this.user.email);
+          this.errorMsg = "Success! Check your email for a reset link.";
+          this.alert = true;
+      } catch (err) {
+          this.errorMsg = err.message;
+          this.alert = true;
+      }
+    },
   }
 }
 </script>
