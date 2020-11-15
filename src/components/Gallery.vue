@@ -8,35 +8,44 @@
           </v-row>
           <v-row justify="center">
             <v-col cols="8" md="3">
-              <v-combobox
+              <v-select
                 :items="colors"
                 label="Color"
                 v-model="colorFilter"
                 @input="filter()"
                 multiple
                 small-chips
+                deletable-chips
+                :menu-props="{ bottom: true, offsetY: true }"
+                attach
                 clearable
                 outlined />
             </v-col>
             <v-col cols="8" md="3">
-              <v-combobox
+              <v-select
                 :items="roomTypes"
                 label="Room Type"
                 v-model="roomTypeFilter"                
                 @input="filter()"
                 multiple
                 small-chips
+                deletable-chips
+                :menu-props="{ bottom: true, offsetY: true }"
+                attach
                 clearable
                 outlined />
             </v-col>
             <v-col cols="8" md="3">
-              <v-combobox
+              <v-select
                 :items="styles"
                 label="Style"
                 v-model="styleFilter"
                 @input="filter()"
                 multiple
                 small-chips
+                deletable-chips
+                :menu-props="{ bottom: true, offsetY: true }"
+                attach
                 clearable
                 outlined />
             </v-col>
@@ -44,7 +53,7 @@
         </v-col>
       </v-col>
     </v-row>
-    <v-row justify="center" class="pb-10">      
+    <v-row justify="center" class="pb-10">
       <v-col
       v-for="(room, r) in filteredRooms"
       :key="r"
@@ -72,6 +81,7 @@
         v-model="overlay">
         <v-card 
           v-click-outside="outside"
+          :width="cardWidth"
           flat>
           <v-window
             v-model="image"
@@ -86,9 +96,7 @@
                       rounded
                       small
                       icon
-                      :href="room.img"
-                      :download="room.img"
-                      target="_blank">
+                      @click.prevent="room.img">
                       <v-icon>mdi-download</v-icon>
                     </v-btn>
                     <v-btn
@@ -135,93 +143,107 @@
         </v-card>
       </v-overlay>
     </v-row>
-    <v-row justify="center" class="display-1 font-weight-black py-10">
-      Don't see what you're looking for?
-    </v-row>
-    <v-row justify="center">            
-      <v-btn outlined large color="blue" to="/contact">
-        Contact Us
-      </v-btn>
-    </v-row>
-    <v-row justify="center" class="body-1 font-weight-light py-10">
-      We can build it custom for you, no problem. Just give us a ring.
+    <v-row justify="center" align="center">
+      <v-col cols="11">
+        <v-row justify="center" class="text-center display-1 font-weight-black py-10">
+          Don't see what you're looking for?
+        </v-row>
+        <v-row justify="center">            
+          <v-btn outlined large color="blue" to="/contact">
+            Contact Us
+          </v-btn>
+        </v-row>
+        <v-row justify="center" class="text-center body-1 font-weight-light py-10">
+          We can build it custom for you, no problem. Just give us a ring.
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'Residential',
-    props: {
-      galleryid: {
-        type: String,
-        default: ''
-      },
-      rooms: {
-        type: Array,
-        default: () => []
-      },
-      colors: {
-        type: Array,
-        default: () => []
-      },
-      roomTypes: {
-        type: Array,
-        default: () => []
-      },
-      styles: {
-        type: Array,
-        default: () => []
-      }
+import * as fb from '@/firebase'
+export default {
+  name: 'Gallery',
+  props: {
+    galleryid: {
+      type: String,
+      default: ''
     },
-    data: () => ({
-      colorFilter: [],
-      roomTypeFilter: [],
-      styleFilter: [],
-      filteredRooms: [],
-      overlay: false,
-      image: 0
-    }),
-    methods: {
-      filter() {
-        var filters = {
-          color: this.colorFilter,
-          roomType: this.roomTypeFilter,
-          style: this.styleFilter
-        }
-        var filtered = this.rooms;
-        var temp = [];
-        for (var filter in filters) {
-          if (filters[filter].length != 0) {
-            for (var j = 0; j < filter.length; j++) {
-              for (var i = 0; i < filtered.length; i++) {
-                if (filtered[i][filter] === filters[filter][j]) {
-                  temp.push(filtered[i]);
-                }
+    rooms: {
+      type: Array,
+      default: () => []
+    },
+    colors: {
+      type: Array,
+      default: () => []
+    },
+    roomTypes: {
+      type: Array,
+      default: () => []
+    },
+    styles: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data: () => ({
+    images: [],
+    colorFilter: [],
+    roomTypeFilter: [],
+    styleFilter: [],
+    overlay: false,
+    image: 0
+  }),
+  methods: {
+    next () {
+      this.image = this.image + 1 === this.filteredRooms.length
+        ? 0
+        : this.image + 1
+    },
+    prev () {
+      this.image = this.image - 1 < 0
+        ? this.filteredRooms.length - 1
+        : this.image - 1
+    },
+    outside () {
+      this.overlay = false;
+    },
+  },
+  computed: {
+    filteredRooms() {
+      var filters = {
+        color: this.colorFilter,
+        roomType: this.roomTypeFilter,
+        style: this.styleFilter
+      }
+      var filtered = this.rooms;
+      var temp = [];
+      for (var filter in filters) {
+        if (filters[filter].length != 0) {
+          for (var j = 0; j < filter.length; j++) {
+            for (var i = 0; i < filtered.length; i++) {
+              if (filtered[i][filter] === filters[filter][j]) {
+                temp.push(filtered[i]);
               }
             }
-            filtered = temp;
-            temp = [];
           }
+          filtered = temp;
+          temp = [];
         }
-        this.filteredRooms = filtered;
-      },
-      next () {
-        this.image = this.image + 1 === this.filteredRooms.length
-          ? 0
-          : this.image + 1
-      },
-      prev () {
-        this.image = this.image - 1 < 0
-          ? this.filteredRooms.length - 1
-          : this.image - 1
-      },
-      outside () {
-        this.overlay = false;
+      }
+      return filtered;
+    },    
+    cardWidth () {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return 200
+        case 'sm': return 250
+        case 'md': return 300
+        case 'lg': return 400
+        case 'xl': return 500
+        default: return 300
       }
     },
-    mounted() {
-      this.filteredRooms = this.rooms;
-    }
   }
+}
 </script>

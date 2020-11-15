@@ -1,25 +1,64 @@
 <template>
   <v-app>
-    <SiteNav />
+    <SiteNav v-if="switchNav" />
+    <AdminNav v-if="!switchNav" />
     <v-main>
       <router-view />
     </v-main>
-    <Footer />
+    <Footer  />
   </v-app>
 </template>
 
 <script>
 import SiteNav from './components/SiteNav';
+import AdminNav from './components/admin/AdminNav';
 import Footer from './components/Footer';
+import { 
+  mapState,
+  mapMutations,
+  mapGetters,
+  mapActions
+} from 'vuex'
 
 export default {
   name: 'App',
 
   components: {
     SiteNav,
+    AdminNav,
     Footer
   },
-
+  computed: {
+    ...mapState(['userProfile']),
+    switchNav() {
+      return Object.keys(this.userProfile).length < 1;
+    }
+  },
+  created() {
+    this.initializeStore();
+    if (Object.keys(this.userProfile).length < 1) {
+      window.addEventListener('beforeunload', this.logout);
+    }
+  },
+  methods: {
+    ...mapActions([
+      'fetchEmployees',
+      'fetchResidentialGallery',
+      'fetchResidentialFilters',
+      'fetchCommercialGallery',
+      'fetchCommercialFilters',
+      'fetchTerms',
+      'logout'
+    ]),
+    initializeStore() {
+      this.fetchEmployees();
+      this.fetchResidentialGallery();
+      this.fetchResidentialFilters();
+      this.fetchCommercialGallery();
+      this.fetchCommercialFilters();
+      this.fetchTerms();
+    }
+  },
   data: () => ({
   }),
 };

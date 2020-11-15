@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home">
     <HeroImage class="pb-16" />
     <Statement class="pb-16" />
     <WorkSamples class="pb-16" />

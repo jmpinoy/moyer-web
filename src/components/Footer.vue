@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0 ma-0">
+  <v-container id="footer" fluid class="pa-0 ma-0">
     <v-row>
       <v-col class="pa-0 ma-0">
         <v-footer>
@@ -108,7 +108,6 @@
                 </v-icon>
               </v-btn>
             </v-col> -->
-
           </v-row>
         </v-footer>
       </v-col>
@@ -122,22 +121,22 @@ export default {
   data: () => ({
     images: [
       {
-        img: 'img/imagePlaceholder.png'
+        img: '/img/imagePlaceholder.png'
       },
       {
-        img: 'img/imagePlaceholder.png'
+        img: '/img/imagePlaceholder.png'
       },
       {
-        img: 'img/imagePlaceholder.png'
+        img: '/img/imagePlaceholder.png'
       },
       {
-        img: 'img/imagePlaceholder.png'
+        img: '/img/imagePlaceholder.png'
       },
       {
-        img: 'img/imagePlaceholder.png'
+        img: '/img/imagePlaceholder.png'
       },
       {
-        img: 'img/imagePlaceholder.png'
+        img: '/img/imagePlaceholder.png'
       },
     ]
   })}

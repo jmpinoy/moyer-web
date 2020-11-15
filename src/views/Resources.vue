@@ -1,5 +1,5 @@
 <template>
-  <div class="resources">
+  <div id="resources">
     <Descriptor
       :descriptorId="heroImage.id"
       :subtitle="heroImage.subtitle"
@@ -30,6 +30,7 @@
 import Descriptor from '@/components/Descriptor.vue'
 import Tiles from '@/components/Tiles.vue'
 import Cards from '@/components/Cards.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Resources',
@@ -46,48 +47,6 @@ export default {
       img: 'img/diagram.png',
       description: 'Something about knowing the common terms, and being empowered to learn a little bit before you even come into the shop for a consultation.'
     },
-    terms: [
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        title: 'Term',
-        description: 'Definition',
-        img: '/img/imagePlaceholder.png'
-      },
-    ],
     partners: [
       {
         title: 'Vendor name 1',
@@ -111,5 +70,8 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapState(['terms'])
+  }
 }
 </script>

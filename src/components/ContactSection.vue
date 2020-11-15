@@ -18,7 +18,7 @@
               {{ description }}
             </v-row>
             <v-row justify="start" align="center" class="py-4">
-              <v-btn outlined large color="blue" :to="button.route">
+              <v-btn outlined large color="blue" @click="GoTo(button.route)">
                 {{ button.name }}
               </v-btn>
             </v-row>
@@ -41,5 +41,10 @@
         route: '/contact'
       }
     }),
+    methods: {
+      GoTo(route) {
+        return this.$router.push(route);
+      }
+    }
   }
 </script>
