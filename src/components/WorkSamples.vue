@@ -7,7 +7,7 @@
             <v-card flat class="py-6">
               <v-row align="center" justify="center">
                 <v-img
-                  :src="require('../assets/logo.svg')"
+                  :src="sample.img"
                   contain
                   height="100" />
               </v-row>
@@ -15,7 +15,7 @@
                   {{ sample.title }}
               </v-row>
               <v-row align="center" justify="center" class="body-2">
-              <a :href="sample.href">
+              <a :href="sample.route">
                   {{ sample.description }}
               </a>
               </v-row>
@@ -35,24 +35,28 @@
       color: '#f4f6fb',
       samples: [
         {
+          img: 'img/logo.svg',
           title: 'Work Sample 1',
           description: 'Descriptive! Residential gallery link.',
-          href: 'https://vuetifyjs.com',
+          route: '/residential',
         },
         {
+          img: 'img/logo.svg',
           title: 'Work Sample 2',
           description: 'Descriptive! Residential gallery link.',
-          href: 'https://vuetifyjs.com',
+          route: '/residential',
         },
         {
+          img: 'img/logo.svg',
           title: 'Work Sample 3',
           description: 'Descriptive! Residential gallery link.',
-          href: 'https://vuetifyjs.com',
+          route: '/residential',
         },
         {
+          img: 'img/logo.svg',
           title: 'Work Sample 4',
           description: 'Descriptive! Residential gallery link.',
-          href: 'https://vuetifyjs.com',
+          route: '/residential',
         },
       ],
     }),

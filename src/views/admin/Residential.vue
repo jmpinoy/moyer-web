@@ -245,6 +245,12 @@
                         @change="preview"
                         accept="images/*">
                       <v-card-subtitle>
+                        Change Description
+                      </v-card-subtitle>
+                      <v-text-field
+                        v-model="description"
+                        label="Description" />
+                      <v-card-subtitle>
                         Color
                       </v-card-subtitle>
                       <v-select
@@ -343,6 +349,12 @@
                             :src="image.img"
                             contain />
                           <v-card-subtitle>
+                            Change Description
+                          </v-card-subtitle>
+                          <v-text-field
+                            v-model="description"
+                            :placeholder="image.description" />
+                          <v-card-subtitle>
                             Color
                           </v-card-subtitle>
                           <v-select
@@ -414,6 +426,7 @@ export default {
     upload: false,
     update: false,
     filters: false,
+    decription: '',
     index: 0,
     color: '',
     roomType: '',
@@ -457,6 +470,7 @@ export default {
         this.removeImage(this.imgRef);
         this.imgRef = '';
       }
+      this.decription = '';
       this.color = '';
       this.roomType = '';
       this.style = '';
@@ -491,15 +505,18 @@ export default {
         id: data.id,
         color: data.color,
         roomType: data.roomType,
+        description: data.description,
         style: data.style,
       }
       var colorPost = {color: this.color};
       var roomTypePost = {roomType: this.roomType};
       var stylePost = {style: this.style};
+      var descriptionPost = {description: this.decription};
 
       if (colorPost.color) post = Object.assign( {}, post, colorPost);
       if (roomTypePost.roomType) post = Object.assign( {}, post, roomTypePost);
       if (stylePost.style) post = Object.assign( {}, post, stylePost);
+      if (descriptionPost.description) post = Object.assign( {}, post, descriptionPost);
 
       if (post) {
         this.updateResidentialPost(post);
@@ -507,6 +524,7 @@ export default {
       this.color = '';
       this.roomType = '';
       this.style = '';
+      this.decription = '';
       this.update = false;
     },
     add() {
@@ -514,6 +532,7 @@ export default {
         color: this.color,
         roomType: this.roomType,
         style: this.style,
+        description: this.decription,
         img: this.img,
         imgRef: this.imgRef,
         index: this.residentialGallery.length
@@ -528,6 +547,7 @@ export default {
       this.color = '';
       this.roomType = '';
       this.style = '';
+      this.decription = '';
       this.img = '';
       this.imgRef = '';
       this.upload = false;
