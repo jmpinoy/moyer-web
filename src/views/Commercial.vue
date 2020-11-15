@@ -33,115 +33,17 @@ export default {
   data: () => ({
     subtitle: 'Gallery',
     title: 'Commercial Work',
-    // rooms: [
-    //   {
-    //     img: '/img/teamPlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Blue',
-    //     roomType: 'Bedroom',
-    //     style: 'Modern',
-    //     index: 0
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Yellow',
-    //     roomType: 'Bedroom',
-    //     style: 'Rustic',
-    //     index: 1
-    //   },
-    //   {
-    //     img: '/img/cabinetPlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Yellow',
-    //     roomType: 'Living Room',
-    //     style: 'Modern',
-    //     index: 2
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Blue',
-    //     roomType: 'Living Room',
-    //     style: 'Rustic',
-    //     index: 3
-    //   },
-    //   {
-    //     img: '/img/moyerDiagram.png',
-    //     description: 'This is a test description',
-    //     color: 'Yellow',
-    //     roomType: 'Kitchen',
-    //     style: 'Minimalist',
-    //     index: 4
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Blue',
-    //     roomType: 'Bedroom',
-    //     style: 'Minimalist',
-    //     index: 5
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Red',
-    //     roomType: 'Living Room',
-    //     style: 'Minimalist',
-    //     index: 6
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Blue',
-    //     roomType: 'Bedroom',
-    //     style: 'Minimalist',
-    //     index: 7
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Red',
-    //     roomType: 'Bedroom',
-    //     style: 'Modern',
-    //     index: 8
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Blue',
-    //     roomType: 'Kitchen',
-    //     style: 'Modern',
-    //     index: 9
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Red',
-    //     roomType: 'Kitchen',
-    //     style: 'Rustic',
-    //     index: 10
-    //   },
-    //   {
-    //     img: '/img/imagePlaceholder.png',
-    //     description: 'This is a test description',
-    //     color: 'Blue',
-    //     roomType: 'Living Room',
-    //     style: 'Rustic',
-    //     index: 11
-    //   },
-    // ]
   }),
   computed: {
     ...mapState(['commercialGallery', 'commercialFilters']),
     colors() {
-      return this.commercialFilters && this.commercialFilters.length > 0 ? this.commercialFilters[0].colors : [];
+      return this.commercialFilters && this.commercialFilters.length > 0 ? this.commercialFilters[0].filters : [];
     },
     roomTypes() {
-      return this.commercialFilters && this.commercialFilters.length > 0 ? this.commercialFilters[2].roomTypes : [];
+      return this.commercialFilters && this.commercialFilters.length > 0 ? this.commercialFilters[1].filters : [];
     },
     styles() {
-      return this.commercialFilters && this.commercialFilters.length > 0 ? this.commercialFilters[1].styles : [];
+      return this.commercialFilters && this.commercialFilters.length > 0 ? this.commercialFilters[2].filters : [];
     }
   }
 }

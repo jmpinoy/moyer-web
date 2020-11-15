@@ -37,13 +37,13 @@ export default {
   computed: {
     ...mapState(['residentialGallery', 'residentialFilters']),
     colors() {
-      return this.residentialFilters && this.residentialFilters.length > 0 ? this.residentialFilters[0].colors : [];
+      return this.residentialFilters && this.residentialFilters.length > 0 ? this.residentialFilters[0].filters : [];
     },
     roomTypes() {
-      return this.residentialFilters && this.residentialFilters.length > 0 ? this.residentialFilters[2].roomTypes : [];
+      return this.residentialFilters && this.residentialFilters.length > 0 ? this.residentialFilters[1].filters : [];
     },
     styles() {
-      return this.residentialFilters && this.residentialFilters.length > 0 ? this.residentialFilters[1].styles : [];
+      return this.residentialFilters && this.residentialFilters.length > 0 ? this.residentialFilters[2].filters : [];
     }
   },
 }
