@@ -14,6 +14,24 @@
             Click employee to edit
           </p>
           </v-row>
+          <v-snackbar
+            light
+            v-model="alert"
+            :timeout="timeout"
+            top>
+            <p>
+              {{ errorMsg }}
+            </p>
+            <template v-slot:action="{ attrs }">
+              <v-btn
+                color="blue"
+                text
+                v-bind="attrs"
+                @click="alert = false" >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
           <v-row justify="center">
             <v-btn
               color="blue"
@@ -26,7 +44,6 @@
             <v-overlay
               v-model="upload">
               <v-card
-                v-click-outside="exit"
                 light
                 color="white"
                 flat>
@@ -35,7 +52,6 @@
                     <v-card
                       flat
                       light
-                      v-click-outside="exit"
                       class="mx-auto"
                       max-width="300"
                       color="white">
@@ -49,6 +65,7 @@
                         Picture
                       </v-card-subtitle>
                       <v-btn
+                        v-if="!img"
                         color="blue"
                         @click="onClick"
                         dark>
@@ -123,7 +140,6 @@
             <v-overlay
               v-model="update">
               <v-card
-                v-click-outside="exit"
                 light
                 color="white"
                 flat>
@@ -137,7 +153,6 @@
                         <v-card
                           flat
                           light
-                          v-click-outside="exit"
                           class="mx-auto"
                           max-width="300"
                           color="white">
@@ -198,7 +213,6 @@ import * as fb from '@/firebase'
 export default {
   name: 'EmployeesAdmin',
   data: () => ({
-    images: [],
     upload: false,
     update: false,
     index: 0,
@@ -206,7 +220,10 @@ export default {
     description: '',
     img: '',
     imgRef: '',
-    imageData: null
+    imageData: null,
+    errorMsg: '',
+    alert: false,
+    timeout: 2500,
   }),
   computed: {
     ...mapState(['employees']),
@@ -232,7 +249,7 @@ export default {
       this.onUpload();
     },
     onUpload() {
-      this.imgRef = `employees/${this.imageData.name}`;
+      this.imgRef = `employees/${this.imageData.name}_${Math.ceil(Math.random()*100000)}`;
       const storageRef = fb.storage.ref(this.imgRef).put(this.imageData);
       storageRef.on(`state_changed`, snapshot => {
         this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;},
@@ -272,7 +289,12 @@ export default {
         imgRef: this.imgRef,
         index: this.employees.length
       }
+      if (this.imgRef) {
       this.createEmployee(post);
+      } else {
+        this.errorMsg = 'Image Required';
+        this.alert = true;
+      }
       this.title = '';
       this.description = '';
       this.img = '';
@@ -283,17 +305,6 @@ export default {
       this.removeImage(data.imgRef);
       this.removeEmployee(data.id);
       this.update = false;
-      for(var i = 0; i < this.employees.length + 1; i++) {
-        var post = {
-          id: this.employees[i].id,
-          title: this.employees[i].title,
-          description: this.employees[i].description,
-          img: i
-        }
-        if (post) {
-          this.updateEmployee(post);
-        }
-      }
     },
     removeOnReload() {      
       if (this.imgRef) {

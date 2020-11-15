@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <SiteNav v-if="false" />
-    <AdminNav v-if="true" />
+    <SiteNav v-if="switchNav" />
+    <AdminNav v-if="!switchNav" />
     <v-main>
       <router-view />
     </v-main>
@@ -36,6 +36,9 @@ export default {
   },
   created() {
     this.initializeStore();
+    if (Object.keys(this.userProfile).length < 1) {
+      window.addEventListener('beforeunload', this.logout);
+    }
   },
   methods: {
     ...mapActions([
@@ -45,6 +48,7 @@ export default {
       'fetchCommercialGallery',
       'fetchCommercialFilters',
       'fetchTerms',
+      'logout'
     ]),
     initializeStore() {
       this.fetchEmployees();

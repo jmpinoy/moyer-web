@@ -61,11 +61,6 @@ export default {
     drawer: false,
     buttons: [
       {
-        name: 'Dashboard',
-        icon: '',
-        route: '/admin/dashboard',
-      },
-      {
         name: 'Employees',
         icon: '',
         route: '/admin/employees',
@@ -94,7 +89,7 @@ export default {
   }),
   methods: {
     GoHome() {
-      return this.$router.push('/admin/dashboard');
+      return this.$router.push('/admin/employees');
     },
     GoTo(route) {
       return this.$router.push(route);
