@@ -96,14 +96,6 @@
                       rounded
                       small
                       icon
-                      @click.prevent="room.img">
-                      <v-icon>mdi-download</v-icon>
-                    </v-btn>
-                    <v-btn
-                      color="white"
-                      rounded
-                      small
-                      icon
                       @click="overlay = false">
                       <v-icon>mdi-close</v-icon>
                     </v-btn>

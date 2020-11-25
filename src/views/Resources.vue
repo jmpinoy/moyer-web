@@ -42,10 +42,9 @@ export default {
   data: () => ({
     heroImage: {
       id: 'commonTerms',
-      subtitle: 'Common Terms',
       title: "A cabinet maker's vocabulary",
       img: 'img/diagram.png',
-      description: 'Something about knowing the common terms, and being empowered to learn a little bit before you even come into the shop for a consultation.'
+      description: 'When you’re in the market for custom cabinets, it’s helpful to equip yourself with some common cabinetry terms. </br></br>The more you know, the more you can imagine.'
     },
     partners: [
       {

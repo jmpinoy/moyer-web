@@ -33,9 +33,9 @@
   export default {
     name: 'ContactSection',
     data: () => ({
-      image: "/img/teamPlaceholder.png",
-      title: "A call to action: contact us!",
-      description: "Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum. Est audiam animal molestiae te. Ex duo eripuit mentitum.",
+      image: "/img/moyer_family.jpg",
+      title: "Got an idea? We’ll make it happen.",
+      description: "With state-of-the-art tools and technologies, our team will help you find the perfect cabinet solution that fits your needs.",
       button: {
         name: 'Contact page',
         route: '/contact'

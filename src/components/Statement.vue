@@ -10,16 +10,7 @@
               </v-col>
             </v-row>
             <v-row class="title font-weight-medium py-4">
-              <v-col cols="10" md="6" v-for="service in services" :key="service.icon">
-                <v-row>
-                  <v-icon color="blue" large>
-                    {{ service.icon }}
-                  </v-icon>
-                </v-row>
-                <v-row>
-                  {{ service.description }}
-                </v-row>
-              </v-col>
+              {{ description }}
             </v-row>
           </v-col>
         </v-card>
@@ -39,19 +30,9 @@
   export default {
     name: 'Statement',
     data: () => ({
-      image: "/img/cabinetPlaceholder.png",
-      title: "Our mission statement",
-      description: "Listen. Here's some good looking stuff for you to look at and you'd better get your *** in our shop now.",
-      services: [
-          {
-              icon: "mdi-cube-outline",
-              description: "We do one thing. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum.",
-          },
-          {
-              icon: "mdi-truck-outline",
-              description: "We do two thing. Est audiam animal molestiae te. Ex duo eripuit mentitum.",
-          },
-      ],
+      image: "/img/omaha2.jpg",
+      title: "Quality in every cabinet",
+      description: "Most cabinet makers charge extra for things like wood drawers, soft-close hinges, and glides. But at Moyer, we offer high standards no matter the job. It’s just what we do.",
     }),
   }
 </script>

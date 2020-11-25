@@ -121,22 +121,22 @@ export default {
   data: () => ({
     images: [
       {
-        img: '/img/imagePlaceholder.png'
+        img: '/img/insta1.jpg'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: '/img/insta2.jpg'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: '/img/insta3.jpg'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: '/img/insta4.jpg'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: '/img/insta5.jpg'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: '/img/insta6.jpg'
       },
     ]
   })}

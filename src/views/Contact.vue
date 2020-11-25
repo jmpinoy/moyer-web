@@ -31,7 +31,7 @@ export default {
       id: 'contact',
       subtitle: 'Contact Us',
       title: 'Build your custom cabinet today',
-      img: 'img/cabinetPlaceholder.png',
+      img: 'img/omaha.jpg',
       description: '402.709.2039<br>moyercabinets@gmail.com<br>1630 Vinton St. Omaha, NE 68108<br>Open 7am - 3:30pm, M - F'
     },
     testimonials: [
