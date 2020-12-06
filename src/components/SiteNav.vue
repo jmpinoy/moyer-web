@@ -2,16 +2,14 @@
   <v-container id="site-nav">
     <v-app-bar
     app
-    height="80"
+    height="120"
     flat
     color="white"
     hide-on-scroll>
       <!-- Logo/Title -->
       <v-row justify="center" class="pt-3">
         <v-toolbar-title id="logo" class="blue--text font-weight-medium">
-          <h2  @click="GoHome"> 
-          Moyer Cabinets
-          </h2>
+          <v-img @click="GoHome" src="https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fmoyer-horizontal.svg?alt=media&token=88fa2ff0-5749-4fe7-83f3-587c15d2499d" />
         </v-toolbar-title>
       </v-row>
 

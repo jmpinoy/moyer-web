@@ -27,16 +27,12 @@ export default {
   data: () => ({
     testimonials: [
       {
-        title: 'Client 1',
-        description: 'Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittanture necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.',
-        subDescription: 'Client name, Company',
-        link: ''
+        title: 'Matt R.',
+        description: '“Thank you so much for all your hard work. You made our dream a reality. Our kitchen remodel turned out so much better than I had imagined it.”',
       },
       {
-        title: 'Client 2',
-        description: 'Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittanture necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.',
-        subDescription: 'Client name, Company',
-        link: ''
+        title: 'Pier M.',
+        description: '“I want to say your company was very nice to work with. Your attention to detail and your craftsmanship were second to none. “',
       },
     ],
   }),

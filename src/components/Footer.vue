@@ -1,115 +1,30 @@
 <template>
-  <v-container id="footer" fluid class="pa-0 ma-0">
-    <v-row>
-      <v-col class="pa-0 ma-0">
-        <v-footer>
-          <v-row class="pa-8 ma-8">
-            <v-col cols="10" md="3">
-              <v-row class="text-h5 font-weight-medium ma-4"> MOYER CABINETS </v-row>
-              <v-row class= "text-subtitle-2 ml-4 my-1"> 402-709-2039 </v-row> 
-              <v-row class= "text-subtitle-2  mx-4 my-1"> moyercabinets@gmail.com </v-row>
-              <v-row class ="text-subtitle-2 mx-4 my-1"> Monday - Friday: 7:00AM - 3:30PM </v-row>
-              <v-row class ="text-subtitle-2 mx-4 my-1"> 1630 Vinton st Omaha, NE 68108 </v-row>
-              <v-btn
-              rounded
-              text
-              icon
-              color="blue"
-              class="white--text"
-              href="https://www.instagram.com/moyercabinets/"
-              target="_blank">
-                <v-icon>
-                  mdi-instagram
-                </v-icon>
-              </v-btn>
-            </v-col>
-            <v-col cols="10" md="8">
-              <v-row>
-                <v-col
-                v-for="(tile, t) in images"
-                :key="t"
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      :src="tile.img"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-col>
-            <!-- <v-col cols="10" md="8">
-              <v-row>
-                <v-col
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      src="https://scontent-dfw5-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/122463650_2754523071499957_1477315772379951028_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com&amp;_nc_cat=101&amp;_nc_ohc=yJioLQ4m5OQAX8QToRh&amp;_nc_tp=15&amp;oh=e6a46f7042f2aa82cd2ad9f13a165eed&amp;oe=5FC3BA99"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-                <v-col
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      src="https://scontent-dfw5-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/122121112_996024900808733_3251785603120775078_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com&amp;_nc_cat=105&amp;_nc_ohc=KFgTz-5oVSsAX_rHoH_&amp;_nc_tp=15&amp;oh=e21901bc8e2fb4f9fc19f9e011c39eed&amp;oe=5FC2C3EB"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-                <v-col
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      src="https://scontent-dfw5-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/122226761_399473024788769_2672556447415238284_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com&amp;_nc_cat=105&amp;_nc_ohc=CpMiOp1CCkUAX-Cul5q&amp;_nc_tp=15&amp;oh=38bf415f186a3ab6bc826a4508c4cfc6&amp;oe=5FC43618"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-                <v-col
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      src="https://scontent-dfw5-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/121262050_336415987648179_6074263452273981338_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com&amp;_nc_cat=103&amp;_nc_ohc=Xbglf0wQFCEAX89CU7z&amp;_nc_tp=15&amp;oh=edcadb6c31bfc351ce967046421059d5&amp;oe=5FC20991"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-                <v-col
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      src="https://scontent-dfw5-2.cdninstagram.com/v/t51.2885-15/e35/121575126_349151192956507_806180815483675270_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com&amp;_nc_cat=107&amp;_nc_ohc=rHDFs3X0NrQAX9DY6i9&amp;tp=18&amp;oh=544445e8418d25299c0377ad6e1ce153&amp;oe=5F9CFBCC"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-                <v-col
-                class="d-flex child-flex"
-                cols="6" md="2">
-                  <v-card class="text-center" flat>
-                    <v-img
-                      src="https://scontent-dfw5-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/121329322_663596104541537_8279165797795453548_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com&amp;_nc_cat=105&amp;_nc_ohc=cHFT0QDIqacAX8FwyHS&amp;_nc_tp=15&amp;oh=b61b41c452194479376317ea63acf544&amp;oe=5FC45BD0"
-                      class="grey lighten-2" />
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-col>
-            <v-col>
-              <v-btn
-              rounded
-              color="blue"
-              class="white--text"
-              href="https://www.instagram.com/moyercabinets/"
-              target="_blank">
-                <v-icon>
-                  mdi-instagram
-                </v-icon>
-              </v-btn>
-            </v-col> -->
-          </v-row>
-        </v-footer>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col cols="11">
+        <v-row justify="center">
+          <v-col cols="8" md="3">
+            <v-img src="https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fmoyer-stacked.svg?alt=media&token=11ec2380-60f5-41c4-ab1c-58e1114f44c5" contain height="145px" />
+          </v-col>
+          <v-col cols="8" md="3" class="pt-8">
+            <p class= "title"> <a class="primary--text" href="mailto:moyercabinets@gmail.com" target="_blank">moyercabinets@gmail.com</a><br>
+            402-709-2039<br>
+            7AM - 3:30PM, Mon - Fri<br>
+            1630 Vinton St, Omaha, NE 68108<br></p>
+          </v-col>
+          <v-col cols="8" md="6">
+            <v-row justify="center">
+              <v-col class="pt-6" v-for="image in images" :key="image.img" cols="10" md="2">
+                <v-card flat href="https://www.instagram.com/moyercabinets/" target="_blank">
+                  <v-img
+                    :src="image.img"
+                    contain
+                    style="border-radius: 20px;" />
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -121,23 +36,17 @@ export default {
   data: () => ({
     images: [
       {
-        img: '/img/imagePlaceholder.png'
+        img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Ffooter-1.jpg?alt=media&token=b58e86b3-df36-4cda-be2b-9ddbb41716c8'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Ffooter-2.jpg?alt=media&token=43e6832d-3128-42c2-8955-ca4c7c44a5bd'
       },
       {
-        img: '/img/imagePlaceholder.png'
+        img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Ffooter-3.jpg?alt=media&token=6f041699-4017-430e-b262-739722727204'
       },
       {
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        img: '/img/imagePlaceholder.png'
-      },
-      {
-        img: '/img/imagePlaceholder.png'
-      },
+        img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Ffooter-4.jpg?alt=media&token=89eb2592-f547-4c10-86bc-73651994adaa'
+      }
     ]
   })}
 </script>

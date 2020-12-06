@@ -1,37 +1,47 @@
 <template>
-  <v-container :id="cardId">
-    <v-row align="center" justify="center">
-      <v-col>
-        <v-row justify="center" v-if="cardSubtitle" class="subtitle-1 blue--text font-weight-black py-4">
-          {{ cardSubtitle }}
-        </v-row>
-        <v-row justify="center" v-if="cardTitle" class="display-1 font-weight-black pb-15">
-          {{ cardTitle }}
-        </v-row>
-        <v-row justify="center" align="center">
-          <v-col cols="11" md="6" v-for="(card, c) in cards" :key="c">
-            <v-card outlined flat class="mx-2 px-8 text-center">
-              <v-row>
-                <v-col>
-                  <v-row align="center" justify="center" class="py-2 font-weight-bold headline">
-                    {{ card.title }}
+  <v-container fluid :id="cardId" :class="bgColor">
+    <v-row justify="center">
+      <v-col cols="11" md="10" lg="9" xl="7">
+        <v-row align="center" justify="center" class="pt-10">
+          <v-col cols="10">
+          <v-row justify="start" class="display-2 pb-10" v-if="title">
+            {{ title }}
+          </v-row>
+            <v-row justify="center" align="start" v-if="!bottom">
+              <v-col cols="11" md="6" v-for="(card, c) in cards" :key="c">
+                <v-card flat :class="bgColor">
+                  <v-row justify="center">
+                    <v-col cols="10">
+                      <v-row align="center" justify="center" class="pb-8 title">
+                        {{ card.description }}
+                      </v-row>
+                      <div id="divider" class="pa-0 ma-0" style="background-color:#D6001C; height: 4px; width:48px; border-radius: 25px;" />
+                      <v-row class="pt-10 display-2">
+                        {{ card.title }}
+                      </v-row>
+                    </v-col>
                   </v-row>
-                  <v-row align="center" justify="center" class="py-2 font-weight-meduim body-1">
-                    {{ card.description }}
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row justify="center" align="start" v-if="bottom">
+              <v-col cols="11" md="6" v-for="(card, c) in cards" :key="c">
+                <v-card flat :class="bgColor">
+                  <v-row justify="center">
+                    <v-col cols="10">
+                      <v-row class="pb-10 display-2">
+                        {{ card.title }}
+                      </v-row>
+                      <div id="divider" class="pa-0 ma-0" style="background-color:#D6001C; height: 4px; width:48px; border-radius: 25px;" />
+                      <v-row class="pt-8 title">
+                        {{ card.description }}
+                      </v-row>
+                    </v-col>
                   </v-row>
-                  <v-row v-if="card.subDescription" align="center" justify="center" class="py-2 font-weight-meduim body-1">
-                    {{ card.subDescription }}
-                  </v-row>
-                  <v-row v-if="card.link" align="center" justify="center" class="py-2 font-weight-meduim body-1">
-                    <a>
-                      {{ card.link }}
-                    </a>
-                  </v-row>
-                </v-col>
-              </v-row>
-            </v-card>
+                </v-card>
+              </v-col>
+            </v-row>
           </v-col>
-
         </v-row>
       </v-col>
     </v-row>
@@ -46,17 +56,21 @@
             type: String,
             default: ''
         },
-        cardTitle: {
-            type: String,
-            default: ''
-        },
-        cardSubtitle: {
-            type: String,
-            default: ''
-        },
         cards: {
           type: Array,
           default: () => []
+        },
+        bottom: {
+          type: Boolean,
+          default: false
+        },
+        title: {
+          type: String,
+          default: ''
+        },
+        bgColor: {
+          type: String,
+          default: ''
         }
     },
     data: () => ({
