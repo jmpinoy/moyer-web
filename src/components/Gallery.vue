@@ -176,16 +176,6 @@ export default {
     image: 0
   }),
   methods: {
-    next () {
-      this.image = this.image + 1 === this.filteredRooms.length
-        ? 0
-        : this.image + 1
-    },
-    prev () {
-      this.image = this.image - 1 < 0
-        ? this.filteredRooms.length - 1
-        : this.image - 1
-    },
     outside () {
       this.overlay = false;
     },
@@ -216,12 +206,10 @@ export default {
     },    
     cardWidth () {
       switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 200
-        case 'sm': return 250
-        case 'md': return 300
+        case 'md': return 350
         case 'lg': return 400
         case 'xl': return 500
-        default: return 300
+        default: return 350
       }
     },
   }

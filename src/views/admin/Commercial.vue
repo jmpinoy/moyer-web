@@ -423,6 +423,7 @@ export default {
     upload: false,
     update: false,
     filters: false,
+    decription: '',
     index: 0,
     color: '',
     roomType: '',
@@ -467,6 +468,7 @@ export default {
         this.removeImage(this.imgRef);
         this.imgRef = '';
       }
+      this.decription = '';
       this.color = '';
       this.roomType = '';
       this.style = '';
@@ -502,6 +504,7 @@ export default {
         id: data.id,
         color: data.color,
         roomType: data.roomType,
+        description: data.description,
         style: data.style,
         description: data.description
       }
