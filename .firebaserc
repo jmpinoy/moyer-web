@@ -1,5 +1,17 @@
 {
   "projects": {
-    "default": "moyerweb-84ddb"
+    "default": "tutorial-crud-app"
+  },
+  "targets": {
+    "tutorial-crud-app": {
+      "hosting": {
+        "test": [
+          "tutorial-crud-app"
+        ],
+        "demo": [
+          "dev-moyers"
+        ]
+      }
+    }
   }
 }
