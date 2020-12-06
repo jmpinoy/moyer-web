@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <v-col align="center" justify="center">
-          <v-row justify="center" class="title blue--text font-weight-black">
+          <v-row justify="center" class="title primary--text font-weight-black">
             Login
           </v-row>
           <v-row justify="center" class="display-1 font-weight-black py-3">
@@ -19,7 +19,7 @@
             </p>
             <template v-slot:action="{ attrs }">
               <v-btn
-                color="blue"
+                color="primary"
                 text
                 v-bind="attrs"
                 @click="alert = false" >
@@ -49,7 +49,7 @@
                   <v-row justify="center">
                     <v-btn
                       :disabled="!valid"
-                      color="blue"
+                      color="primary"
                       dark
                       @click="login()"
                       class="ma-4">
@@ -58,7 +58,7 @@
                   </v-row>
                   <v-row justify="center">
                     <v-btn
-                      color="blue"
+                      color="primary"
                       small
                       text
                       @click="forgot = true" >
@@ -82,7 +82,7 @@
                   <v-row justify="center">
                     <v-btn
                       :disabled="!valid"
-                      color="blue"
+                      color="primary"
                       dark
                       @click="resetPassword()"
                       class="ma-4">
@@ -91,7 +91,7 @@
                   </v-row>
                   <v-row justify="center">
                     <v-btn
-                      color="blue"
+                      color="primary"
                       small
                       text
                       @click="forgot = false" >

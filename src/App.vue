@@ -65,19 +65,29 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Mulish');
-
-$body-font-family: 'Mulish', sans-serif;
-$title-font-family: 'Mulish', sans-serif;
-$heading-font-family: 'Cardo', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans');
 
 .v-application {
-  font-family: $body-font-family, sans-serif !important;
-  .headline, .title, .subtitle-1, .subtitle-2, .display-1, .display-2 {
-    font-family: $title-font-family, sans-serif !important;
-  }
+  font-family: 'PT Sans', sans-serif !important;  
   .display-3, .display-4 {
-    font-family: $heading-font-family, sans-serif !important;
+    font-family: 'PT Sans', sans-serif !important;
+    font-size: 44px;
+    font-weight: bold;
+  }
+  .headline, .display-1, .display-2 {
+    font-family: 'PT Sans', sans-serif !important;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .title, .subtitle-1 {
+    font-family: 'PT Sans', sans-serif !important;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  .subtitle-2, .body-1, .body-2 {
+    font-family: 'PT Sans', sans-serif !important;
+    font-size: 14px;
+    font-weight: normal;
   }
 }
 </style>

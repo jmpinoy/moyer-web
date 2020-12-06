@@ -3,9 +3,6 @@
     <v-row>
       <v-col>
         <v-col align="center" justify="center">
-          <v-row justify="center" class="title blue--text font-weight-black">
-            Moyer Cabinets Web Manager
-          </v-row>
           <v-row justify="center" class="display-1 font-weight-black py-3">
             Terms
           </v-row>
@@ -24,7 +21,7 @@
             </p>
             <template v-slot:action="{ attrs }">
               <v-btn
-                color="blue"
+                color="primary"
                 text
                 v-bind="attrs"
                 @click="alert = false" >
@@ -34,7 +31,7 @@
           </v-snackbar>
           <v-row justify="center">
             <v-btn
-              color="blue"
+              color="primary"
               dark
               @click="upload = true">
               Add
@@ -66,7 +63,7 @@
                       </v-card-subtitle>
                       <v-btn
                         v-if="!img"
-                        color="blue"
+                        color="primary"
                         @click="onClick"
                         dark>
                         Upload
@@ -108,7 +105,7 @@
               </v-card>
             </v-overlay>
           </v-row>
-          <v-row align="center" justify="center" class="my-8">
+          <v-row align="start" justify="center" class="my-8">
             <v-col
             v-for="term in terms"
             :key="term.index"

@@ -163,7 +163,8 @@ const store = new Vuex.Store({
       fb.residentialGalleryCollection.doc(data.id).update({
         color: data.color,
         roomType: data.roomType,
-        style: data.style
+        style: data.style,
+        description: data.description
       }).then(function() {
       }).catch(function(err) {
         console.error("Error updating post: ", err);
@@ -244,7 +245,8 @@ const store = new Vuex.Store({
       fb.commercialGalleryCollection.doc(data.id).update({
         color: data.color,
         roomType: data.roomType,
-        style: data.style
+        style: data.style,
+        description: data.description
       }).then(function() {
       }).catch(function(err) {
         console.error("Error updating post: ", err);

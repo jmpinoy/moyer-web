@@ -3,9 +3,6 @@
     <v-row>
       <v-col>
         <v-col align="center" justify="center">
-          <v-row justify="center" class="title blue--text font-weight-black">
-            Moyer Cabinets Web Manager
-          </v-row>
           <v-row justify="center" class="display-1 font-weight-black py-3">
             Commercial Gallery
           </v-row>
@@ -24,7 +21,7 @@
             </p>
             <template v-slot:action="{ attrs }">
               <v-btn
-                color="blue"
+                color="primary"
                 text
                 v-bind="attrs"
                 @click="alert = false" >
@@ -35,14 +32,14 @@
           <v-row justify="center">
             <v-btn
               class="mr-3"
-              color="blue"
+              color="primary"
               dark
               @click="upload = true">
               Add
             </v-btn>
             <v-btn
               class="ml-3"
-              color="blue"
+              color="primary"
               dark
               @click="filters = true">
               Edit Filters
@@ -233,7 +230,7 @@
                       </v-card-subtitle>
                       <v-btn
                         v-if="!img" 
-                        color="blue"
+                        color="primary"
                         @click="onClick"
                         dark>
                         Upload
@@ -244,6 +241,12 @@
                         style="display: none"
                         @change="preview"
                         accept="images/*">
+                      <v-card-subtitle>
+                        Description
+                      </v-card-subtitle>
+                      <v-text-field
+                        v-model="description"
+                        placeholder="Description" />
                       <v-card-subtitle>
                         Color
                       </v-card-subtitle>
@@ -293,7 +296,7 @@
               </v-card>
             </v-overlay>
           </v-row>
-          <v-row align="center" justify="center" class="my-8">
+          <v-row align="start" justify="center" class="my-8">
             <v-col
             v-for="(image, i) in commercialGallery"
             :key="i"
@@ -342,6 +345,12 @@
                           <v-img
                             :src="image.img"
                             contain />
+                          <v-card-subtitle>
+                            Change Description
+                          </v-card-subtitle>
+                          <v-text-field
+                            v-model="description"
+                            :placeholder="image.description" />
                           <v-card-subtitle>
                             Color
                           </v-card-subtitle>
@@ -423,6 +432,7 @@ export default {
     newStyle: '',
     img: '',
     imgRef: '',
+    description: '',
     imageData: null,
     errorMsg: '',
     alert: false,
@@ -460,6 +470,7 @@ export default {
       this.color = '';
       this.roomType = '';
       this.style = '';
+      this.description = '';
       this.img = '';
       this.imgRef = '';
       this.upload = false;
@@ -492,14 +503,17 @@ export default {
         color: data.color,
         roomType: data.roomType,
         style: data.style,
+        description: data.description
       }
       var colorPost = {color: this.color};
       var roomTypePost = {roomType: this.roomType};
       var stylePost = {style: this.style};
+      var descriptionPost = {description: this.description};
 
       if (colorPost.color) post = Object.assign( {}, post, colorPost);
       if (roomTypePost.roomType) post = Object.assign( {}, post, roomTypePost);
       if (stylePost.style) post = Object.assign( {}, post, stylePost);
+      if (descriptionPost.description) post = Object.assign( {}, post, descriptionPost);
 
       if (post) {
         this.updateCommercialPost(post);
@@ -507,6 +521,7 @@ export default {
       this.color = '';
       this.roomType = '';
       this.style = '';
+      this.description = '';
       this.update = false;
     },
     add() {
@@ -514,6 +529,7 @@ export default {
         color: this.color,
         roomType: this.roomType,
         style: this.style,
+        description: this.description,
         img: this.img,
         imgRef: this.imgRef,
         index: this.commercialGallery.length
@@ -527,6 +543,7 @@ export default {
       this.color = '';
       this.roomType = '';
       this.style = '';
+      this.description = '';
       this.img = '';
       this.imgRef = '';
       this.upload = false;
