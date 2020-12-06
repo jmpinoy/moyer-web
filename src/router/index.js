@@ -126,7 +126,10 @@ const router = new VueRouter({
     return { x: 0, y: 0 };
   },
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
 
 // navigation guard to check for logged in users
