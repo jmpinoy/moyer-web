@@ -176,6 +176,16 @@ export default {
     image: 0
   }),
   methods: {
+    next () {
+      this.image = this.image + 1 === this.filteredRooms.length
+        ? 0
+        : this.image + 1
+    },
+    prev () {
+      this.image = this.image - 1 < 0
+        ? this.filteredRooms.length - 1
+        : this.image - 1
+    },
     outside () {
       this.overlay = false;
     },
