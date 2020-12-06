@@ -3,9 +3,6 @@
     <v-row>
       <v-col>
         <v-col align="center" justify="center">
-          <v-row justify="center" class="title blue--text font-weight-black">
-            Moyer Cabinets Web Manager
-          </v-row>
           <v-row justify="center" class="display-1 font-weight-black py-3">
             Settings
           </v-row>
@@ -24,7 +21,7 @@
                   </p>
                   <template v-slot:action="{ attrs }">
                     <v-btn
-                      color="blue"
+                      color="primary"
                       text
                       v-bind="attrs"
                       @click="alert = false" >
@@ -59,7 +56,7 @@
                         v-model="email"
                         placeholder="E-mail" />
                       <v-btn
-                        color="blue"
+                        color="primary"
                         text
                         @click="changeEmail()" >
                         Submit
@@ -92,7 +89,7 @@
                         v-model="email"
                         placeholder="E-mail" />
                       <v-btn
-                        color="blue"
+                        color="primary"
                         text
                         @click="resetPassword()" >
                         Submit
@@ -101,7 +98,7 @@
                   </v-expansion-panel>
                 </v-expansion-panels>
                 <v-btn
-                  color="blue"
+                  color="primary"
                   dark
                   @click="logout()"
                   class="my-16" >

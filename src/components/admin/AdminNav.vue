@@ -8,9 +8,9 @@
     hide-on-scroll>
       <!-- Logo/Title -->
       <v-row justify="center" class="pt-3">
-        <v-toolbar-title id="logo" class="blue--text font-weight-medium">
+        <v-toolbar-title id="logo" class="primary--text">
           <h2  @click="GoHome"> 
-          Moyer Cabinets
+          Moyer Cabinets Web Manager
           </h2>
         </v-toolbar-title>
       </v-row>

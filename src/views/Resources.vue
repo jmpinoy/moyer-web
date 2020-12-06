@@ -2,7 +2,6 @@
   <div id="resources">
     <Descriptor
       :descriptorId="heroImage.id"
-      :subtitle="heroImage.subtitle"
       :title="heroImage.title"
       orientation="left"
       :image="heroImage.img"
@@ -12,17 +11,34 @@
     <Tiles
       tileId="terms"
       tileSubtitle="Common Terms"
-      tileTitle="Common cabinet terms"
+      tileTitle="Common cabinetry terms"
       :tiles="terms"
       class="pb-16" />
 
-    
     <Cards
+      bottom
+      title="Our Vendors"
       cardId="partners"
       cardSubtitle="Our Partners"
       cardTitle="A headline about vendors"
       :cards="partners"
       class="pb-16" />
+      
+    <v-row justify="center" align="center" class="background">
+      <v-col cols="11">
+        <v-row justify="center" class="text-center display-2 py-10">
+          Interested in partnering?
+        </v-row>
+        <v-row justify="center">            
+          <v-btn large class="primary title" to="/contact">
+            Contact Us
+          </v-btn>
+        </v-row>
+        <v-row justify="center" class="text-center title py-10">
+          We’re always looking for new vendors and partners.
+        </v-row>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -40,34 +56,44 @@ export default {
     Cards
   },
   data: () => ({
-    heroImage: {
+    heroImage: { 
       id: 'commonTerms',
       subtitle: 'Common Terms',
       title: "A cabinet maker's vocabulary",
-      img: 'img/diagram.png',
-      description: 'Something about knowing the common terms, and being empowered to learn a little bit before you even come into the shop for a consultation.'
+      img: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fresources-1.jpg?alt=media&token=52179d53-2a16-4193-b773-de0b10c29520',
+      description: 'When you’re in the market for custom cabinets, it’s helpful to equip yourself with some common cabinetry terms.<br><br>The more you know, the more you can imagine.'
     },
     partners: [
       {
-        title: 'Vendor name 1',
-        description: 'Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.',
-        link: 'Link to vendor site'
+        title: 'Daniels Olsen Products',
+        description: 'Melamine Sheet Goods',
+        link: ''
       },
       {
-        title: 'Vendor name 2',
-        description: 'Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.',
-        link: 'Link to vendor site'
+        title: 'Liberty Hardwoods',
+        description: 'Hardwood Lumber (Oak, Birch, Beech, Maple , Walnut)',
+        link: ''
       },
       {
-        title: 'Vendor name 3',
-        description: 'Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.',
-        link: 'Link to vendor site'
+        title: 'Oharco',
+        description: 'Blum Hinges',
+        link: ''
       },
       {
-        title: 'Vendor name 4',
-        description: 'Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.',
-        link: 'Link to vendor site'
+        title: 'Hardware Resources',
+        description: 'Drawer Glides, Drawer Boxes',
+        link: ''
       },
+      {
+        title: 'Diamond Vogel',
+        description: 'Aquinity Paint',
+        link: ''
+      },
+      {
+        title: 'Jeffrey Alexander',
+        description: 'Decorative Hardware',
+        link: ''
+      }
     ],
   }),
   computed: {

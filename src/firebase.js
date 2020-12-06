@@ -5,14 +5,13 @@ import 'firebase/storage'
 
 // firebase init - add your own config here
 const firebaseConfig = {
-  apiKey: "AIzaSyCXSPdHCfIKXmjELqfQVeC7UVLduWDZJfc",
-  authDomain: "tutorial-crud-app.firebaseapp.com",
-  databaseURL: "https://tutorial-crud-app.firebaseio.com",
-  projectId: "tutorial-crud-app",
-  storageBucket: "tutorial-crud-app.appspot.com",
-  messagingSenderId: "38204224427",
-  appId: "1:38204224427:web:ae61723905d9af4fd358ee",
-  measurementId: "G-J0BFEVJDXL"
+  apiKey: "AIzaSyCvPN8TiQV5faZ0n-lNgXz9iytFZQL273o",
+  authDomain: "moyerweb-84ddb.firebaseapp.com",
+  projectId: "moyerweb-84ddb",
+  storageBucket: "moyerweb-84ddb.appspot.com",
+  messagingSenderId: "65100341568",
+  appId: "1:65100341568:web:bbe20f4fef61f428b65aa5",
+  measurementId: "G-4RRSVZT2X7"
 };
 firebase.initializeApp(firebaseConfig)
 

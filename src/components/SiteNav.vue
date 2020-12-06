@@ -2,16 +2,14 @@
   <v-container id="site-nav">
     <v-app-bar
     app
-    height="80"
+    height="120"
     flat
     color="white"
     hide-on-scroll>
       <!-- Logo/Title -->
       <v-row justify="center" class="pt-3">
         <v-toolbar-title id="logo" class="blue--text font-weight-medium">
-          <h2  @click="GoHome"> 
-          Moyer Cabinets
-          </h2>
+          <v-img @click="GoHome" src="https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fmoyer-horizontal.svg?alt=media&token=eda83c67-e458-4853-ae8a-94aed42679db" />
         </v-toolbar-title>
       </v-row>
 
@@ -26,7 +24,7 @@
         {{ button.name }}
         </v-btn>
       </v-toolbar-items>
-      <!-- Nav drawer -->
+      <!-- Nav drawer --> 
       <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = true" />
     </v-app-bar>
     <v-navigation-drawer

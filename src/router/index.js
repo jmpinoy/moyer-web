@@ -8,32 +8,56 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "" */ '../views/Home.vue'),
+    meta: {
+      redirect: false,
+      requiresAuth: false
+    },
   },
   {
     path: '/about',
     name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: {
+      redirect: false,
+      requiresAuth: false
+    },
   },
   {
     path: '/residential',
     name: 'Residential',
-    component: () => import(/* webpackChunkName: "residential" */ '../views/Residential.vue')
+    component: () => import(/* webpackChunkName: "residential" */ '../views/Residential.vue'),
+    meta: {
+      redirect: false,
+      requiresAuth: false
+    },
   },
   {
     path: '/commercial',
     name: 'Commercial',
-    component: () => import(/* webpackChunkName: "commercial" */ '../views/Commercial.vue')
+    component: () => import(/* webpackChunkName: "commercial" */ '../views/Commercial.vue'),
+    meta: {
+      redirect: false,
+      requiresAuth: false
+    },
   },
   {
     path: '/resources',
     name: 'Resources',
-    component: () => import(/* webpackChunkName: "resources" */ '../views/Resources.vue')
+    component: () => import(/* webpackChunkName: "resources" */ '../views/Resources.vue'),
+    meta: {
+      redirect: false,
+      requiresAuth: false
+    },
   },
   {
     path: '/contact',
     name: 'Contact',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
+    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue'),
+    meta: {
+      redirect: false,
+      requiresAuth: false
+    },
   },
   {
     path: '/admin',
@@ -48,6 +72,7 @@ const routes = [
         path: '/admin/login',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Login.vue'),
         meta: {
+          redirect: false,
           requiresAuth: false
         },
       },
@@ -55,6 +80,7 @@ const routes = [
         path: '/admin/employees',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Employees.vue'),
         meta: {
+          redirect: false,
           requiresAuth: true
         },
       },
@@ -62,6 +88,7 @@ const routes = [
         path: '/admin/residential',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Residential.vue'),
         meta: {
+          redirect: false,
           requiresAuth: true
         },
       },
@@ -69,6 +96,7 @@ const routes = [
         path: '/admin/commercial',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Commercial.vue'),
         meta: {
+          redirect: false,
           requiresAuth: true
         },
       },
@@ -76,6 +104,7 @@ const routes = [
         path: '/admin/terms',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Terms.vue'),
         meta: {
+          redirect: false,
           requiresAuth: true
         },
       },
@@ -83,6 +112,7 @@ const routes = [
         path: '/admin/settings',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/Settings.vue'),
         meta: {
+          redirect: false,
           requiresAuth: true
         },
       }
@@ -92,6 +122,9 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
   base: process.env.BASE_URL,
   routes,
   scrollBehavior () {
