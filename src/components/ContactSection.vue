@@ -28,7 +28,7 @@
                 </v-row>
               </v-col>
             </v-card>
-          </v-col>
+          </v-col> 
         </v-row>
       </v-col>
     </v-row>
@@ -39,7 +39,7 @@
   export default {
     name: 'ContactSection',
     data: () => ({
-      image: "https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-7.jpg?alt=media&token=c5be2f98-a1d5-4286-abf5-dc1ba3215ff9",
+      image: "https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-7.jpg?alt=media&token=c81ecbce-e05e-4023-993d-596cf45967ce",
       title: "Got an idea? We'll make it happen",
       description: "With state-of-the-art tools and technologies, our team will help you find the perfect cabinet solution that fits your needs.",
     }),

@@ -26,7 +26,7 @@
               :src="image"
               style="border-radius: 25px;" />
             </v-card>
-          </v-col>
+          </v-col> 
         </v-row>
       </v-col>
     </v-row>
@@ -37,7 +37,7 @@
   export default {
     name: 'Statement',
     data: () => ({
-      image: "https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-2.jpg?alt=media&token=caf52af3-a9b9-4cbb-86b2-ad46038e4c6a",
+      image: "https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-2.jpg?alt=media&token=d65d306f-aac2-4da8-a14d-1abbe6f77c92",
       title: "Quality in every cabinet",
       description: "Most cabinet makers charge extra for things like wood drawers, soft-close hinges, and glides. But at Moyer, we offer high standards no matter the job. It’s just what we do."
     }),

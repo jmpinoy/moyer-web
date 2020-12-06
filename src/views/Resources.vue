@@ -56,11 +56,11 @@ export default {
     Cards
   },
   data: () => ({
-    heroImage: {
+    heroImage: { 
       id: 'commonTerms',
       subtitle: 'Common Terms',
       title: "A cabinet maker's vocabulary",
-      img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fresources-1.jpg?alt=media&token=efaac2b6-309c-4fc6-925a-67e3f175b7b7',
+      img: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fresources-1.jpg?alt=media&token=52179d53-2a16-4193-b773-de0b10c29520',
       description: 'When you’re in the market for custom cabinets, it’s helpful to equip yourself with some common cabinetry terms.<br><br>The more you know, the more you can imagine.'
     },
     partners: [

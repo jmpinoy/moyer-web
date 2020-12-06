@@ -24,7 +24,7 @@
                     <v-btn dark large class="body-2 primary font-weight-bold" :to="button.route">
                       {{ button.name }}
                     </v-btn>
-                  </v-col>
+                  </v-col> 
                 </v-row>
               </v-col>
             </v-card>
@@ -39,7 +39,7 @@
   export default {
     name: 'HeroImage',
     data: () => ({
-      image: "https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-1.jpg?alt=media&token=7ce2c0a0-2b7d-4a8b-9fec-a9c82091fbd7",
+      image: "https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-1.jpg?alt=media&token=54a1ae0c-5362-41dc-bf46-27b0a7c89c51",
       title: "Custom cabinets.<br>Fair prices",
       description: "Since 1953, our family has delivered quality cabinets to the Omaha metro area and helped thousands of customers craft their dreams. No cabinet is too custom for Moyer.",
       buttons: [
