@@ -39,24 +39,24 @@
     name: 'WorkSamples',
 
     data: () => ({
-      samples: [
+      samples: [ 
         {
-          src: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-3.jpg?alt=media&token=d1082b82-efc9-4cea-b9e1-60d2669875d3',
+          src: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-3.jpg?alt=media&token=a7c1e6b1-6d5e-4e79-b12b-a1e7c9d8501b',
           title: 'Prefinished',
           description: 'Finishing our cabinets in the shop minimizes disruptions in your home or business'
         },
         {
-          src: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-4.jpg?alt=media&token=46469f6c-18b5-47c1-b0fa-eb9ddf2d3b15',
+          src: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-4.jpg?alt=media&token=7898dafc-2d8d-4ef1-a850-befe248809de',
           title: 'Frameless',
           description: 'Offering a sleek, modern look with more shelf and drawer space'
         },
         {
-          src: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-5.jpg?alt=media&token=e5dd3ffb-5544-431d-9262-3b4cae930388',
+          src: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-5.jpg?alt=media&token=8235bbc7-53b8-4b2e-84b0-dbfebb21cec9',
           title: 'Wood Drawers',
           description: 'Giving your cabinets a high-class, handmade feel'
         },
         {
-          src: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fhome-6.jpg?alt=media&token=23b09040-0f3d-44b3-af95-9d1c177f1e0e',
+          src: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fhome-6.jpg?alt=media&token=43116308-ee45-4652-b604-0d3a40334e8f',
           title: 'Soft-Close Hinges Glides',
           description: 'No more damaging door and drawer slams'
         },

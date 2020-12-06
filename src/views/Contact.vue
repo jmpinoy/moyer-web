@@ -27,9 +27,9 @@ export default {
   },
   data: () => ({
     story: {
-      id: 'contact',
+      id: 'contact', 
       title: 'Build your custom cabinet today',
-      img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fcontact-1.jpg?alt=media&token=8bef7f2d-ff07-479c-9ad5-9ff27ef2dbee',
+      img: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fcontact-1.jpg?alt=media&token=603045ed-5fdb-4cb5-8b50-21bff30585a2',
       description: '402.709.2039<br>moyercabinets@gmail.com<br>1630 Vinton St. Omaha, NE 68108<br>Open 7am - 3:30pm, M - F'
     },
     testimonials: [

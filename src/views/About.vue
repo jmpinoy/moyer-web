@@ -50,16 +50,16 @@ export default {
     Tiles
   },
   data: () => ({
-    story: {
+    story: { 
       id: 'story',
       title: 'Welcome to the family',
-      img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fabout-1.jpg?alt=media&token=67f6747a-08db-4461-abf5-e4e31ee95daa',
+      img: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fabout-1.jpg?alt=media&token=d6744439-c826-40c5-a3f4-224474657663',
       description: 'Charles Moyer founded Moyer Cabinets with a simple philosophy: "The customer is always right.” After 46 years in business, that basic principle still holds true.<br><br>Although the methods of designing and building cabinets have changed over the years, one thing has not: the quality and craftsmanship we put into every cabinet we make.'
     },
     shop: {
       id: 'shop',
       title: 'Serving the Omaha area since 1965',
-      img: 'https://firebasestorage.googleapis.com/v0/b/tutorial-crud-app.appspot.com/o/siteImages%2Fabout-2.jpg?alt=media&token=2c2c1e61-f726-4899-905c-668b672f2187',
+      img: 'https://firebasestorage.googleapis.com/v0/b/moyerweb-84ddb.appspot.com/o/siteImages%2Fabout-2.jpg?alt=media&token=2e948889-af66-42ac-b785-1ff4ec680d45',
       description: 'Our shop sits in the historic Vinton Street neighborhood, where we have the finest tools and technologies to make sure you get exactly what you want — perfection. We invite you to join the Moyer family today.'
 
     }
